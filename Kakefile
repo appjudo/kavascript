@@ -17,10 +17,12 @@ unless process.env.NODE_DISABLE_COLORS
 header = """
   /**
    * KavaScript Compiler v#{KavaScript.VERSION}
+   * Copyright (c) 2016 AppJudo Inc.
    * http://kavascript.org
    *
-   * Copyright (c) 2016 AppJudo Inc.
-   * Based on CoffeeScript Compiler, Copyright 2011, Jeremy Ashkenas
+   * Based on CoffeeScript Compiler
+   * Copyright 2011, Jeremy Ashkenas
+   *
    * Released under the MIT License
    */
 """
