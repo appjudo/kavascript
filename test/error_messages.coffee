@@ -5,7 +5,7 @@
 # in a consistent way.
 
 assertErrorFormat = (code, expectedErrorFormat) ->
-  throws (-> CoffeeScript.run code), (err) ->
+  throws (-> KavaScript.run code), (err) ->
     err.colorful = no
     eq expectedErrorFormat, "#{err}"
     yes
@@ -59,7 +59,7 @@ if require?
 
   test "patchStackTrace line patching", ->
     err = new Error 'error'
-    ok err.stack.match /test[\/\\]error_messages\.coffee:\d+:\d+\b/
+    ok err.stack.match /test[\/\\]error_messages\.ks:\d+:\d+\b/
 
   test "patchStackTrace stack prelude consistent with V8", ->
     err = new Error
@@ -70,20 +70,20 @@ if require?
 
   test "#2849: compilation error in a require()d file", ->
     # Create a temporary file to require().
-    ok not fs.existsSync 'test/syntax-error.coffee'
-    fs.writeFileSync 'test/syntax-error.coffee', 'foo in bar or in baz'
+    ok not fs.existsSync 'test/syntax-error.ks'
+    fs.writeFileSync 'test/syntax-error.ks', 'foo in bar or in baz'
 
     try
       assertErrorFormat '''
         require './test/syntax-error'
       ''',
       """
-        #{path.join __dirname, 'syntax-error.coffee'}:1:15: error: unexpected in
+        #{path.join __dirname, 'syntax-error.ks'}:1:15: error: unexpected in
         foo in bar or in baz
                       ^^
       """
     finally
-      fs.unlink 'test/syntax-error.coffee'
+      fs.unlink 'test/syntax-error.ks'
 
 
 test "#1096: unexpected generated tokens", ->
@@ -559,7 +559,7 @@ test "invalid regex flags", ->
     ///a///ii
            ^^
   '''
-  doesNotThrow -> CoffeeScript.compile '/a/ymgi'
+  doesNotThrow -> KavaScript.compile '/a/ymgi'
 
 test "missing `)`, `}`, `]`", ->
   assertErrorFormat '''

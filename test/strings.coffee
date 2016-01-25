@@ -235,7 +235,7 @@ test '#2388: `"""` in heredoc interpolations', ->
 
 test "trailing whitespace", ->
   testTrailing = (str, expected) ->
-    eq CoffeeScript.eval(str.replace /\|$/gm, ''), expected
+    eq KavaScript.eval(str.replace /\|$/gm, ''), expected
   testTrailing '''"   |
       |
     a   |
@@ -350,15 +350,15 @@ test "#1046, empty string interpolations", ->
   eq "#{ }", ''
 
 test "strings are not callable", ->
-  throws -> CoffeeScript.compile '"a"()'
-  throws -> CoffeeScript.compile '"a#{b}"()'
-  throws -> CoffeeScript.compile '"a" 1'
-  throws -> CoffeeScript.compile '"a#{b}" 1'
-  throws -> CoffeeScript.compile '''
+  throws -> KavaScript.compile '"a"()'
+  throws -> KavaScript.compile '"a#{b}"()'
+  throws -> KavaScript.compile '"a" 1'
+  throws -> KavaScript.compile '"a#{b}" 1'
+  throws -> KavaScript.compile '''
     "a"
        k: v
   '''
-  throws -> CoffeeScript.compile '''
+  throws -> KavaScript.compile '''
     "a#{b}"
        k: v
   '''

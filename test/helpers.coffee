@@ -1,8 +1,8 @@
 # Helpers
 # -------
 
-# pull the helpers from `CoffeeScript.helpers` into local variables
-{starts, ends, repeat, compact, count, merge, extend, flatten, del, baseFileName} = CoffeeScript.helpers
+# pull the helpers from `KavaScript.helpers` into local variables
+{starts, ends, repeat, compact, count, merge, extend, flatten, del, baseFileName} = KavaScript.helpers
 
 
 # `starts`
@@ -99,25 +99,25 @@ test "the `del` helper deletes a property from an object and returns the deleted
 test "the `baseFileName` helper returns the file name to write to", ->
   ext = '.js'
   sourceToCompiled =
-    '.coffee': ext
-    'a.coffee': 'a' + ext
-    'b.coffee': 'b' + ext
-    'coffee.coffee': 'coffee' + ext
+    '.ks': ext
+    'a.ks': 'a' + ext
+    'b.ks': 'b' + ext
+    'kavascript.ks': 'kavascript' + ext
 
-    '.litcoffee': ext
-    'a.litcoffee': 'a' + ext
-    'b.litcoffee': 'b' + ext
-    'coffee.litcoffee': 'coffee' + ext
+    '.vks': ext
+    'a.vks': 'a' + ext
+    'b.vks': 'b' + ext
+    'kavascript.vks': 'kavascript' + ext
 
     '.lit': ext
     'a.lit': 'a' + ext
     'b.lit': 'b' + ext
-    'coffee.lit': 'coffee' + ext
+    'kavascript.lit': 'kavascript' + ext
 
-    '.coffee.md': ext
-    'a.coffee.md': 'a' + ext
-    'b.coffee.md': 'b' + ext
-    'coffee.coffee.md': 'coffee' + ext
+    '.ks.md': ext
+    'a.ks.md': 'a' + ext
+    'b.ks.md': 'b' + ext
+    'kavascript.ks.md': 'kavascript' + ext
 
   for sourceFileName, expectedFileName of sourceToCompiled
     name = baseFileName sourceFileName, yes

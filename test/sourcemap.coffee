@@ -29,9 +29,9 @@ test "SourceMap tests", ->
 
   testWithFilenames = map.generate {
         sourceRoot: "",
-        sourceFiles: ["source.coffee"],
+        sourceFiles: ["source.ks"],
         generatedFile: "source.js"}
-  eqJson testWithFilenames, '{"version":3,"file":"source.js","sourceRoot":"","sources":["source.coffee"],"names":[],"mappings":"AAAA;;IACK,GAAC,CAAG;IAET"}'
+  eqJson testWithFilenames, '{"version":3,"file":"source.js","sourceRoot":"","sources":["source.ks"],"names":[],"mappings":"AAAA;;IACK,GAAC,CAAG;IAET"}'
   eqJson map.generate(), '{"version":3,"file":"","sourceRoot":"","sources":[""],"names":[],"mappings":"AAAA;;IACK,GAAC,CAAG;IAET"}'
 
   # Look up a generated column - should get back the original source position.

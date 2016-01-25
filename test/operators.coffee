@@ -216,8 +216,8 @@ test "#1714: lexer bug with raw range `for` followed by `in`", ->
   ok not ('a' in ['b'])
 
   # lexer state (specifically @seenFor) should be reset before each compilation
-  CoffeeScript.compile "0 for [1..2]"
-  CoffeeScript.compile "'a' in ['b']"
+  KavaScript.compile "0 for [1..2]"
+  KavaScript.compile "'a' in ['b']"
 
 test "#1099: statically determined `not in []` reporting incorrect result", ->
   ok 0 not in []

@@ -1,2 +1,2 @@
-fill = (container, liquid = "coffee") ->
+fill = (container, liquid = "kava") ->
   "Filling the #{container} with #{liquid}..."

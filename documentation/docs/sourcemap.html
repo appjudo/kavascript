@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>sourcemap.litcoffee</title>
+  <title>sourcemap.vks</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -21,77 +21,77 @@
               
                 
                 <a class="source" href="browser.html">
-                  browser.coffee
+                  browser.ks
                 </a>
               
                 
-                <a class="source" href="cake.html">
-                  cake.coffee
+                <a class="source" href="kake.html">
+                  kake.ks
                 </a>
               
                 
-                <a class="source" href="coffee-script.html">
-                  coffee-script.coffee
+                <a class="source" href="kavascript.html">
+                  kavascript.ks
                 </a>
               
                 
                 <a class="source" href="command.html">
-                  command.coffee
+                  command.ks
                 </a>
               
                 
                 <a class="source" href="grammar.html">
-                  grammar.coffee
+                  grammar.ks
                 </a>
               
                 
                 <a class="source" href="helpers.html">
-                  helpers.coffee
+                  helpers.ks
                 </a>
               
                 
                 <a class="source" href="index.html">
-                  index.coffee
+                  index.ks
                 </a>
               
                 
                 <a class="source" href="lexer.html">
-                  lexer.coffee
+                  lexer.ks
                 </a>
               
                 
                 <a class="source" href="nodes.html">
-                  nodes.coffee
+                  nodes.ks
                 </a>
               
                 
                 <a class="source" href="optparse.html">
-                  optparse.coffee
+                  optparse.ks
                 </a>
               
                 
                 <a class="source" href="register.html">
-                  register.coffee
+                  register.ks
                 </a>
               
                 
                 <a class="source" href="repl.html">
-                  repl.coffee
+                  repl.ks
                 </a>
               
                 
                 <a class="source" href="rewriter.html">
-                  rewriter.coffee
+                  rewriter.ks
                 </a>
               
                 
                 <a class="source" href="scope.html">
-                  scope.litcoffee
+                  scope.vks
                 </a>
               
                 
                 <a class="source" href="sourcemap.html">
-                  sourcemap.litcoffee
+                  sourcemap.vks
                 </a>
               
             </div>
@@ -103,7 +103,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>sourcemap.litcoffee</h1>
+                  <h1>sourcemap.vks</h1>
               </div>
           </li>
         
@@ -118,7 +118,7 @@
               <p>Source maps allow JavaScript runtimes to match running JavaScript back to
 the original source code that corresponds to it. This can be minified
 JavaScript, but in our case, we’re concerned with mapping pretty-printed
-JavaScript back to CoffeeScript.</p>
+JavaScript back to KavaScript.</p>
 <p>In order to produce maps, we must keep track of positions (line number, column number)
 that originated every node in the syntax tree, and be able to generate a
 <a href="https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit">map file</a>
@@ -178,7 +178,7 @@ positions for a single line of output JavaScript code.
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
               <p>Maps locations in a single generated JavaScript file back to locations in
-the original CoffeeScript source file.</p>
+the original KavaScript source file.</p>
 <p>This is intentionally agnostic towards how a source map might be represented on
 disk. Once the compiler is ready to produce a “v3”-style source map, we can walk
 through the arrays of line and column buffer to produce it.</p>

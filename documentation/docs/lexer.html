@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>lexer.coffee</title>
+  <title>lexer.ks</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -21,77 +21,77 @@
               
                 
                 <a class="source" href="browser.html">
-                  browser.coffee
+                  browser.ks
                 </a>
               
                 
-                <a class="source" href="cake.html">
-                  cake.coffee
+                <a class="source" href="kake.html">
+                  kake.ks
                 </a>
               
                 
-                <a class="source" href="coffee-script.html">
-                  coffee-script.coffee
+                <a class="source" href="kavascript.html">
+                  kavascript.ks
                 </a>
               
                 
                 <a class="source" href="command.html">
-                  command.coffee
+                  command.ks
                 </a>
               
                 
                 <a class="source" href="grammar.html">
-                  grammar.coffee
+                  grammar.ks
                 </a>
               
                 
                 <a class="source" href="helpers.html">
-                  helpers.coffee
+                  helpers.ks
                 </a>
               
                 
                 <a class="source" href="index.html">
-                  index.coffee
+                  index.ks
                 </a>
               
                 
                 <a class="source" href="lexer.html">
-                  lexer.coffee
+                  lexer.ks
                 </a>
               
                 
                 <a class="source" href="nodes.html">
-                  nodes.coffee
+                  nodes.ks
                 </a>
               
                 
                 <a class="source" href="optparse.html">
-                  optparse.coffee
+                  optparse.ks
                 </a>
               
                 
                 <a class="source" href="register.html">
-                  register.coffee
+                  register.ks
                 </a>
               
                 
                 <a class="source" href="repl.html">
-                  repl.coffee
+                  repl.ks
                 </a>
               
                 
                 <a class="source" href="rewriter.html">
-                  rewriter.coffee
+                  rewriter.ks
                 </a>
               
                 
                 <a class="source" href="scope.html">
-                  scope.litcoffee
+                  scope.vks
                 </a>
               
                 
                 <a class="source" href="sourcemap.html">
-                  sourcemap.litcoffee
+                  sourcemap.vks
                 </a>
               
             </div>
@@ -103,7 +103,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>lexer.coffee</h1>
+                  <h1>lexer.ks</h1>
               </div>
           </li>
         
@@ -115,14 +115,14 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p>The CoffeeScript Lexer. Uses a series of token-matching regexes to attempt
+              <p>The KavaScript Lexer. Uses a series of token-matching regexes to attempt
 matches against the beginning of the source code. When a match is found,
 a token is produced, we consume the match, and start again. Tokens are in the
 form:</p>
 <pre><code>[tag, value, locationData]
 </code></pre><p>where locationData is {first_line, first_column, last_line, last_column}, which is a
 format that can be fed directly into <a href="http://github.com/zaach/jison">Jison</a>.  These
-are read by jison in the <code>parser.lexer</code> function defined in coffee-script.coffee.</p>
+are read by jison in the <code>parser.lexer</code> function defined in kavascript.ks.</p>
 
             </div>
             
@@ -142,7 +142,7 @@ are read by jison in the <code>parser.lexer</code> function defined in coffee-sc
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>{count, starts, compact, repeat, invertLiterate,
+            <div class="content"><div class='highlight'><pre>{count, starts, compact, repeat, invertVerbose,
 locationDataToString,  throwSyntaxError} = <span class="hljs-built_in">require</span> <span class="hljs-string">'./helpers'</span></pre></div></div>
             
         </li>
@@ -179,7 +179,7 @@ locationDataToString,  throwSyntaxError} = <span class="hljs-built_in">require</
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p>The Lexer class reads a stream of CoffeeScript and divvies it up into tagged
+              <p>The Lexer class reads a stream of KavaScript and divvies it up into tagged
 tokens. Some potential ambiguity in the grammar has been avoided by
 pushing some extra smarts into the Lexer.</p>
 
@@ -208,7 +208,7 @@ it has consumed.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>  <span class="hljs-attribute">tokenize</span>: <span class="hljs-function"><span class="hljs-params">(code, opts = {})</span> -&gt;</span>
-    <span class="hljs-property">@literate</span>   = opts.literate  <span class="hljs-comment"># Are we lexing literate CoffeeScript?</span>
+    <span class="hljs-property">@verbose</span>   = opts.verbose  <span class="hljs-comment"># Are we lexing verbose KavaScript?</span>
     <span class="hljs-property">@indent</span>     = <span class="hljs-number">0</span>              <span class="hljs-comment"># The current indentation level.</span>
     <span class="hljs-property">@baseIndent</span> = <span class="hljs-number">0</span>              <span class="hljs-comment"># The overall minimum indentation level</span>
     <span class="hljs-property">@indebt</span>     = <span class="hljs-number">0</span>              <span class="hljs-comment"># The over-indentation at the current level.</span>
@@ -286,7 +286,7 @@ short-circuiting if any of them succeed. Their order determines precedence:
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
               <p>Preprocess the code to remove leading and trailing whitespace, carriage
-returns, etc. If we’re lexing literate CoffeeScript, strip external Markdown
+returns, etc. If we’re lexing verbose KavaScript, strip external Markdown
 by removing all lines that aren’t indented by at least four spaces or a tab.</p>
 
             </div>
@@ -297,7 +297,7 @@ by removing all lines that aren’t indented by at least four spaces or a tab.</
     <span class="hljs-keyword">if</span> WHITESPACE.test code
       code = <span class="hljs-string">"\n<span class="hljs-subst">#{code}</span>"</span>
       <span class="hljs-property">@chunkLine</span>--
-    code = invertLiterate code <span class="hljs-keyword">if</span> <span class="hljs-property">@literate</span>
+    code = invertVerbose code <span class="hljs-keyword">if</span> <span class="hljs-property">@verbose</span>
     code</pre></div></div>
             
         </li>
@@ -336,7 +336,7 @@ by removing all lines that aren’t indented by at least four spaces or a tab.</
               </div>
               <p>Matches identifying literals: variables, keywords, method names, etc.
 Check to ensure that JavaScript reserved words aren’t being used as
-identifiers. Because CoffeeScript reserves a handful of keywords that are
+identifiers. Because KavaScript reserves a handful of keywords that are
 allowed in JavaScript, we’re careful not to tag them as keywords when
 referenced as property names here, so you can still do <code>jQuery.is()</code> even
 though <code>is</code> means <code>===</code> otherwise.</p>
@@ -1581,7 +1581,7 @@ location of a token (<code>token[2]</code>).</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-62">&#182;</a>
               </div>
-              <p>Keywords that CoffeeScript shares in common with JavaScript.</p>
+              <p>Keywords that KavaScript shares in common with JavaScript.</p>
 
             </div>
             
@@ -1602,7 +1602,7 @@ location of a token (<code>token[2]</code>).</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-63">&#182;</a>
               </div>
-              <p>CoffeeScript-only keywords.</p>
+              <p>KavaScript-only keywords.</p>
 
             </div>
             
@@ -1632,7 +1632,7 @@ COFFEE_KEYWORDS = COFFEE_KEYWORDS.concat COFFEE_ALIASES</pre></div></div>
                 <a class="pilcrow" href="#section-64">&#182;</a>
               </div>
               <p>The list of keywords that are reserved by JavaScript, but not used, or are
-used by CoffeeScript internally. We throw an error when these are encountered,
+used by KavaScript internally. We throw an error when these are encountered,
 to avoid having a JavaScript error at runtime.</p>
 
             </div>

@@ -1,5 +1,5 @@
 # Examples from the Poignant Guide.
-# These are examples of syntax differences between CoffeeScript and Ruby,
+# These are examples of syntax differences between KavaScript and Ruby,
 # they won't run.
 
 # ['toast', 'cheese', 'wine'].each { |food| print food.capitalize }

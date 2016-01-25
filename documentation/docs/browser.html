@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>browser.coffee</title>
+  <title>browser.ks</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -21,77 +21,77 @@
               
                 
                 <a class="source" href="browser.html">
-                  browser.coffee
+                  browser.ks
                 </a>
               
                 
-                <a class="source" href="cake.html">
-                  cake.coffee
+                <a class="source" href="kake.html">
+                  kake.ks
                 </a>
               
                 
-                <a class="source" href="coffee-script.html">
-                  coffee-script.coffee
+                <a class="source" href="kavascript.html">
+                  kavascript.ks
                 </a>
               
                 
                 <a class="source" href="command.html">
-                  command.coffee
+                  command.ks
                 </a>
               
                 
                 <a class="source" href="grammar.html">
-                  grammar.coffee
+                  grammar.ks
                 </a>
               
                 
                 <a class="source" href="helpers.html">
-                  helpers.coffee
+                  helpers.ks
                 </a>
               
                 
                 <a class="source" href="index.html">
-                  index.coffee
+                  index.ks
                 </a>
               
                 
                 <a class="source" href="lexer.html">
-                  lexer.coffee
+                  lexer.ks
                 </a>
               
                 
                 <a class="source" href="nodes.html">
-                  nodes.coffee
+                  nodes.ks
                 </a>
               
                 
                 <a class="source" href="optparse.html">
-                  optparse.coffee
+                  optparse.ks
                 </a>
               
                 
                 <a class="source" href="register.html">
-                  register.coffee
+                  register.ks
                 </a>
               
                 
                 <a class="source" href="repl.html">
-                  repl.coffee
+                  repl.ks
                 </a>
               
                 
                 <a class="source" href="rewriter.html">
-                  rewriter.coffee
+                  rewriter.ks
                 </a>
               
                 
                 <a class="source" href="scope.html">
-                  scope.litcoffee
+                  scope.vks
                 </a>
               
                 
                 <a class="source" href="sourcemap.html">
-                  sourcemap.litcoffee
+                  sourcemap.vks
                 </a>
               
             </div>
@@ -103,7 +103,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>browser.coffee</h1>
+                  <h1>browser.ks</h1>
               </div>
           </li>
         
@@ -115,17 +115,17 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p>This <strong>Browser</strong> compatibility layer extends core CoffeeScript functions
+              <p>This <strong>Browser</strong> compatibility layer extends core KavaScript functions
 to make things work smoothly when compiling code directly in the browser.
 We add support for loading remote Coffee scripts via <strong>XHR</strong>, and
-<code>text/coffeescript</code> script tags, source maps via data-URLs, and so on.</p>
+<code>text/kavascript</code> script tags, source maps via data-URLs, and so on.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>
-CoffeeScript = <span class="hljs-built_in">require</span> <span class="hljs-string">'./coffee-script'</span>
-CoffeeScript.<span class="hljs-built_in">require</span> = <span class="hljs-built_in">require</span>
-compile = CoffeeScript.compile</pre></div></div>
+KavaScript = <span class="hljs-built_in">require</span> <span class="hljs-string">'./kavascript'</span>
+KavaScript.<span class="hljs-built_in">require</span> = <span class="hljs-built_in">require</span>
+compile = KavaScript.compile</pre></div></div>
             
         </li>
         
@@ -140,7 +140,7 @@ compile = CoffeeScript.compile</pre></div></div>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>CoffeeScript.<span class="hljs-function"><span class="hljs-title">eval</span> = <span class="hljs-params">(code, options = {})</span> -&gt;</span>
+            <div class="content"><div class='highlight'><pre>KavaScript.<span class="hljs-function"><span class="hljs-title">eval</span> = <span class="hljs-params">(code, options = {})</span> -&gt;</span>
   options.bare ?= <span class="hljs-literal">on</span>
   eval compile code, options</pre></div></div>
             
@@ -157,7 +157,7 @@ compile = CoffeeScript.compile</pre></div></div>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>CoffeeScript.<span class="hljs-function"><span class="hljs-title">run</span> = <span class="hljs-params">(code, options = {})</span> -&gt;</span>
+            <div class="content"><div class='highlight'><pre>KavaScript.<span class="hljs-function"><span class="hljs-title">run</span> = <span class="hljs-params">(code, options = {})</span> -&gt;</span>
   options.bare = <span class="hljs-literal">on</span>
   options.shiftLine = <span class="hljs-literal">on</span>
   Function(compile code, options)()</pre></div></div>
@@ -196,8 +196,8 @@ Ported from <a href="https://developer.mozilla.org/en-US/docs/DOM/window.btoa">h
   <span class="hljs-function"><span class="hljs-title">compile</span> = <span class="hljs-params">(code, options = {})</span> -&gt;</span>
     options.sourceMap = <span class="hljs-literal">true</span>
     options.inline = <span class="hljs-literal">true</span>
-    {js, v3SourceMap} = CoffeeScript.compile code, options
-    <span class="hljs-string">"<span class="hljs-subst">#{js}</span>\n//# sourceMappingURL=data:application/json;base64,<span class="hljs-subst">#{btoa unescape encodeURIComponent v3SourceMap}</span>\n//# sourceURL=coffeescript"</span></pre></div></div>
+    {js, v3SourceMap} = KavaScript.compile code, options
+    <span class="hljs-string">"<span class="hljs-subst">#{js}</span>\n//# sourceMappingURL=data:application/json;base64,<span class="hljs-subst">#{btoa unescape encodeURIComponent v3SourceMap}</span>\n//# sourceURL=kavascript"</span></pre></div></div>
             
         </li>
         
@@ -212,7 +212,7 @@ Ported from <a href="https://developer.mozilla.org/en-US/docs/DOM/window.btoa">h
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>CoffeeScript.<span class="hljs-function"><span class="hljs-title">load</span> = <span class="hljs-params">(url, callback, options = {}, hold = <span class="hljs-literal">false</span>)</span> -&gt;</span>
+            <div class="content"><div class='highlight'><pre>KavaScript.<span class="hljs-function"><span class="hljs-title">load</span> = <span class="hljs-params">(url, callback, options = {}, hold = <span class="hljs-literal">false</span>)</span> -&gt;</span>
   options.sourceFiles = [url]
   xhr = <span class="hljs-keyword">if</span> <span class="hljs-built_in">window</span>.ActiveXObject
     <span class="hljs-keyword">new</span> <span class="hljs-built_in">window</span>.ActiveXObject(<span class="hljs-string">'Microsoft.XMLHTTP'</span>)
@@ -224,7 +224,7 @@ Ported from <a href="https://developer.mozilla.org/en-US/docs/DOM/window.btoa">h
     <span class="hljs-keyword">if</span> xhr.readyState <span class="hljs-keyword">is</span> <span class="hljs-number">4</span>
       <span class="hljs-keyword">if</span> xhr.status <span class="hljs-keyword">in</span> [<span class="hljs-number">0</span>, <span class="hljs-number">200</span>]
         param = [xhr.responseText, options]
-        CoffeeScript.run param... <span class="hljs-keyword">unless</span> hold
+        KavaScript.run param... <span class="hljs-keyword">unless</span> hold
       <span class="hljs-keyword">else</span>
         <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Error <span class="hljs-string">"Could not load <span class="hljs-subst">#{url}</span>"</span>
       callback param <span class="hljs-keyword">if</span> callback
@@ -239,39 +239,39 @@ Ported from <a href="https://developer.mozilla.org/en-US/docs/DOM/window.btoa">h
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>Activate CoffeeScript in the browser by having it compile and evaluate
-all script tags with a content-type of <code>text/coffeescript</code>.
+              <p>Activate KavaScript in the browser by having it compile and evaluate
+all script tags with a content-type of <code>text/kavascript</code>.
 This happens on page load.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-title">runScripts</span> = -&gt;</span>
   scripts = <span class="hljs-built_in">window</span>.<span class="hljs-built_in">document</span>.getElementsByTagName <span class="hljs-string">'script'</span>
-  coffeetypes = [<span class="hljs-string">'text/coffeescript'</span>, <span class="hljs-string">'text/literate-coffeescript'</span>]
-  coffees = (s <span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> scripts <span class="hljs-keyword">when</span> s.type <span class="hljs-keyword">in</span> coffeetypes)
+  ksTypes = [<span class="hljs-string">'text/kavascript'</span>, <span class="hljs-string">'text/verbose-kavascript'</span>]
+  ksTags = (s <span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> scripts <span class="hljs-keyword">when</span> s.type <span class="hljs-keyword">in</span> ksTypes)
   index = <span class="hljs-number">0</span>
 
   <span class="hljs-function"><span class="hljs-title">execute</span> = -&gt;</span>
-    param = coffees[index]
+    param = ksTags[index]
     <span class="hljs-keyword">if</span> param <span class="hljs-keyword">instanceof</span> Array
-      CoffeeScript.run param...
+      KavaScript.run param...
       index++
       execute()
 
-  <span class="hljs-keyword">for</span> script, i <span class="hljs-keyword">in</span> coffees
+  <span class="hljs-keyword">for</span> script, i <span class="hljs-keyword">in</span> ksTags
     <span class="hljs-keyword">do</span> <span class="hljs-function"><span class="hljs-params">(script, i)</span> -&gt;</span>
-      options = <span class="hljs-attribute">literate</span>: script.type <span class="hljs-keyword">is</span> coffeetypes[<span class="hljs-number">1</span>]
+      options = <span class="hljs-attribute">verbose</span>: script.type <span class="hljs-keyword">is</span> ksTypes[<span class="hljs-number">1</span>]
       source = script.src <span class="hljs-keyword">or</span> script.getAttribute(<span class="hljs-string">'data-src'</span>)
       <span class="hljs-keyword">if</span> source
-        CoffeeScript.load source,
+        KavaScript.load source,
           <span class="hljs-function"><span class="hljs-params">(param)</span> -&gt;</span>
-            coffees[i] = param
+            ksTags[i] = param
             execute()
           options
           <span class="hljs-literal">true</span>
       <span class="hljs-keyword">else</span>
         options.sourceFiles = [<span class="hljs-string">'embedded'</span>]
-        coffees[i] = [script.innerHTML, options]
+        ksTags[i] = [script.innerHTML, options]
 
   execute()</pre></div></div>
             

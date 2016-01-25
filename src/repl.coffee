@@ -2,12 +2,12 @@ fs = require 'fs'
 path = require 'path'
 vm = require 'vm'
 nodeREPL = require 'repl'
-CoffeeScript = require './coffee-script'
+KavaScript = require './kavascript'
 {merge, updateSyntaxError} = require './helpers'
 
 replDefaults =
-  prompt: 'coffee> ',
-  historyFile: path.join process.env.HOME, '.coffee_history' if process.env.HOME
+  prompt: 'kavascript> ',
+  historyFile: path.join process.env.HOME, '.ks_history' if process.env.HOME
   historyMaxInputSize: 10240
   eval: (input, context, filename, cb) ->
     # XXX: multiline hack.
@@ -21,13 +21,13 @@ replDefaults =
 
     try
       # Tokenize the clean input.
-      tokens = CoffeeScript.tokens input
-      # Collect referenced variable names just like in `CoffeeScript.compile`.
+      tokens = KavaScript.tokens input
+      # Collect referenced variable names just like in `KavaScript.compile`.
       referencedVars = (
         token[1] for token in tokens when token.variable
       )
       # Generate the AST of the tokens.
-      ast = CoffeeScript.nodes tokens
+      ast = KavaScript.nodes tokens
       # Add assignment to `_` variable to force the input to be an expression.
       ast = new Block [
         new Assign (new Value new Literal '_'), ast, '='
@@ -145,11 +145,11 @@ module.exports =
     [major, minor, build] = process.versions.node.split('.').map (n) -> parseInt(n)
 
     if major is 0 and minor < 8
-      console.warn "Node 0.8.0+ required for CoffeeScript REPL"
+      console.warn "Node 0.8.0+ required for KavaScript REPL"
       process.exit 1
 
-    CoffeeScript.register()
-    process.argv = ['coffee'].concat process.argv[2..]
+    KavaScript.register()
+    process.argv = ['ks'].concat process.argv[2..]
     opts = merge replDefaults, opts
     repl = nodeREPL.start opts
     runInContext opts.prelude, repl.context, 'prelude' if opts.prelude

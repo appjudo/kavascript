@@ -1,9 +1,9 @@
 fs            = require 'fs'
 path          = require 'path'
 _             = require 'underscore'
-CoffeeScript  = require './lib/coffee-script'
+KavaScript  = require './lib/kavascript'
 {spawn, exec} = require 'child_process'
-helpers       = require './lib/coffee-script/helpers'
+helpers       = require './lib/kavascript/helpers'
 
 # ANSI Terminal Colors.
 bold = red = green = reset = ''
@@ -16,23 +16,24 @@ unless process.env.NODE_DISABLE_COLORS
 # Built file header.
 header = """
   /**
-   * CoffeeScript Compiler v#{CoffeeScript.VERSION}
-   * http://coffeescript.org
+   * KavaScript Compiler v#{KavaScript.VERSION}
+   * http://kavascript.org
    *
-   * Copyright 2011, Jeremy Ashkenas
+   * Copyright (c) 2016 AppJudo Inc.
+   * Based on CoffeeScript Compiler, Copyright 2011, Jeremy Ashkenas
    * Released under the MIT License
    */
 """
 
-# Build the CoffeeScript language from source.
+# Build the KavaScript language from source.
 build = (cb) ->
   files = fs.readdirSync 'src'
-  files = ('src/' + file for file in files when file.match(/\.(lit)?coffee$/))
-  run ['-c', '-o', 'lib/coffee-script'].concat(files), cb
+  files = ('src/' + file for file in files when file.match(/\.v?ks$/))
+  run ['-c', '-o', 'lib/kavascript'].concat(files), cb
 
-# Run a CoffeeScript through our node/coffee interpreter.
+# Run a KavaScript through our node/ks interpreter.
 run = (args, cb) ->
-  proc =         spawn 'node', ['bin/coffee'].concat(args)
+  proc =         spawn 'node', ['bin/ks'].concat(args)
   proc.stderr.on 'data', (buffer) -> console.log buffer.toString()
   proc.on        'exit', (status) ->
     process.exit(1) if status != 0
@@ -49,11 +50,11 @@ codeFor = ->
   (file, executable = false, showLoad = true) ->
     counter++
     return unless fs.existsSync "documentation/js/#{file}.js"
-    cs = fs.readFileSync "documentation/coffee/#{file}.coffee", 'utf-8'
+    cs = fs.readFileSync "documentation/ks/#{file}.ks", 'utf-8'
     js = fs.readFileSync "documentation/js/#{file}.js", 'utf-8'
     js = js.replace /^\/\/ generated.*?\n/i, ''
 
-    cshtml = "<pre><code>#{hljs.highlight('coffeescript', cs).value}</code></pre>"
+    cshtml = "<pre><code>#{hljs.highlight('kavascript', cs).value}</code></pre>"
     jshtml = "<pre><code>#{hljs.highlight('javascript', js).value}</code></pre>"
     append = if executable is yes then '' else "alert(#{executable});"
     if executable and executable != yes
@@ -87,39 +88,39 @@ formatDate = (date) ->
 releaseHeader = (date, version, prevVersion) -> """
   <div class="anchor" id="#{version}"></div>
   <b class="header">
-    #{prevVersion and "<a href=\"https://github.com/jashkenas/coffeescript/compare/#{prevVersion}...#{version}\">#{version}</a>" or version}
+    #{prevVersion and "<a href=\"https://github.com/appjudo/kavascript/compare/#{prevVersion}...#{version}\">#{version}</a>" or version}
     <span class="timestamp"> &mdash; <time datetime="#{date}">#{formatDate date}</time></span>
   </b>
 """
 
-option '-p', '--prefix [DIR]', 'set the installation prefix for `cake install`'
+option '-p', '--prefix [DIR]', 'set the installation prefix for `kake install`'
 
-task 'install', 'install CoffeeScript into /usr/local (or --prefix)', (options) ->
+task 'install', 'install KavaScript into /usr/local (or --prefix)', (options) ->
   base = options.prefix or '/usr/local'
-  lib  = "#{base}/lib/coffee-script"
+  lib  = "#{base}/lib/kavascript"
   bin  = "#{base}/bin"
-  node = "~/.node_libraries/coffee-script"
-  console.log   "Installing CoffeeScript to #{lib}"
+  node = "~/.node_libraries/kavascript"
+  console.log   "Installing KavaScript to #{lib}"
   console.log   "Linking to #{node}"
-  console.log   "Linking 'coffee' to #{bin}/coffee"
+  console.log   "Linking 'ks' to #{bin}/ks"
   exec([
     "mkdir -p #{lib} #{bin}"
     "cp -rf bin lib LICENSE README.md package.json src #{lib}"
-    "ln -sfn #{lib}/bin/coffee #{bin}/coffee"
-    "ln -sfn #{lib}/bin/cake #{bin}/cake"
+    "ln -sfn #{lib}/bin/ks #{bin}/ks"
+    "ln -sfn #{lib}/bin/kake #{bin}/kake"
     "mkdir -p ~/.node_libraries"
-    "ln -sfn #{lib}/lib/coffee-script #{node}"
+    "ln -sfn #{lib}/lib/kavascript #{node}"
   ].join(' && '), (err, stdout, stderr) ->
     if err then console.log stderr.trim() else log 'done', green
   )
 
 
-task 'build', 'build the CoffeeScript language from source', build
+task 'build', 'build the KavaScript language from source', build
 
 task 'build:full', 'rebuild the source twice, and run the tests', ->
   build ->
     build ->
-      csPath = './lib/coffee-script'
+      csPath = './lib/kavascript'
       csDir  = path.dirname require.resolve csPath
 
       for mod of require.cache when csDir is mod[0 ... csDir.length]
@@ -132,44 +133,44 @@ task 'build:full', 'rebuild the source twice, and run the tests', ->
 task 'build:parser', 'rebuild the Jison parser (run build first)', ->
   helpers.extend global, require('util')
   require 'jison'
-  parser = require('./lib/coffee-script/grammar').parser
-  fs.writeFile 'lib/coffee-script/parser.js', parser.generate()
+  parser = require('./lib/kavascript/grammar').parser
+  fs.writeFile 'lib/kavascript/parser.js', parser.generate()
 
 task 'build:browser', 'rebuild the merged script for inclusion in the browser', ->
   code = ''
-  for name in ['helpers', 'rewriter', 'lexer', 'parser', 'scope', 'nodes', 'sourcemap', 'coffee-script', 'browser']
+  for name in ['helpers', 'rewriter', 'lexer', 'parser', 'scope', 'nodes', 'sourcemap', 'kavascript', 'browser']
     code += """
       require['./#{name}'] = (function() {
         var exports = {}, module = {exports: exports};
-        #{fs.readFileSync "lib/coffee-script/#{name}.js"}
+        #{fs.readFileSync "lib/kavascript/#{name}.js"}
         return module.exports;
       })();
     """
   code = """
     (function(root) {
-      var CoffeeScript = function() {
+      var KavaScript = function() {
         function require(path){ return require[path]; }
         #{code}
-        return require['./coffee-script'];
+        return require['./kavascript'];
       }();
 
       if (typeof define === 'function' && define.amd) {
-        define(function() { return CoffeeScript; });
+        define(function() { return KavaScript; });
       } else {
-        root.CoffeeScript = CoffeeScript;
+        root.KavaScript = KavaScript;
       }
     }(this));
   """
   unless process.env.MINIFY is 'false'
     {code} = require('uglify-js').minify code, fromString: true
-  fs.writeFileSync 'extras/coffee-script.js', header + '\n' + code
+  fs.writeFileSync 'extras/kavascript.js', header + '\n' + code
   console.log "built ... running browser tests:"
   invoke 'test:browser'
 
 
 task 'doc:site', 'watch and continually rebuild the documentation for the website', ->
   source = 'documentation/index.html.js'
-  exec 'bin/coffee -bc -o documentation/js documentation/coffee/*.coffee'
+  exec 'bin/ks -bc -o documentation/js documentation/ks/*.ks'
 
   do renderIndex = ->
     codeSnippetCounter = 0
@@ -184,39 +185,39 @@ task 'doc:site', 'watch and continually rebuild the documentation for the websit
 
 
 task 'doc:source', 'rebuild the internal documentation', ->
-  exec 'node_modules/.bin/docco src/*.*coffee && cp -rf docs documentation && rm -r docs', (err) ->
+  exec 'node_modules/.bin/docco src/*.*ks && cp -rf docs documentation && rm -r docs', (err) ->
     throw err if err
 
 
-task 'doc:underscore', 'rebuild the Underscore.coffee documentation page', ->
-  exec 'node_modules/.bin/docco examples/underscore.coffee && cp -rf docs documentation && rm -r docs', (err) ->
+task 'doc:underscore', 'rebuild the Underscore.ks documentation page', ->
+  exec 'node_modules/.bin/docco examples/underscore.ks && cp -rf docs documentation && rm -r docs', (err) ->
     throw err if err
 
 task 'bench', 'quick benchmark of compilation time', ->
-  {Rewriter} = require './lib/coffee-script/rewriter'
-  sources = ['coffee-script', 'grammar', 'helpers', 'lexer', 'nodes', 'rewriter']
-  coffee  = sources.map((name) -> fs.readFileSync "src/#{name}.coffee").join '\n'
-  litcoffee = fs.readFileSync("src/scope.litcoffee").toString()
+  {Rewriter} = require './lib/kavascript/rewriter'
+  sources = ['kavascript', 'grammar', 'helpers', 'lexer', 'nodes', 'rewriter']
+  ks  = sources.map((name) -> fs.readFileSync "src/#{name}.ks").join '\n'
+  vks = fs.readFileSync("src/scope.vks").toString()
   fmt    = (ms) -> " #{bold}#{ "   #{ms}".slice -4 }#{reset} ms"
   total  = 0
   now    = Date.now()
   time   = -> total += ms = -(now - now = Date.now()); fmt ms
-  tokens = CoffeeScript.tokens coffee, rewrite: no
-  littokens = CoffeeScript.tokens litcoffee, rewrite: no, literate: yes
+  tokens = KavaScript.tokens ks, rewrite: no
+  littokens = KavaScript.tokens vks, rewrite: no, verbose: yes
   tokens = tokens.concat(littokens)
   console.log "Lex    #{time()} (#{tokens.length} tokens)"
   tokens = new Rewriter().rewrite tokens
   console.log "Rewrite#{time()} (#{tokens.length} tokens)"
-  nodes  = CoffeeScript.nodes tokens
+  nodes  = KavaScript.nodes tokens
   console.log "Parse  #{time()}"
   js     = nodes.compile bare: yes
   console.log "Compile#{time()} (#{js.length} chars)"
   console.log "total  #{ fmt total }"
 
 
-# Run the CoffeeScript test suite.
-runTests = (CoffeeScript) ->
-  CoffeeScript.register()
+# Run the KavaScript test suite.
+runTests = (KavaScript) ->
+  KavaScript.register()
   startTime   = Date.now()
   currentFile = null
   passedTests = 0
@@ -225,8 +226,8 @@ runTests = (CoffeeScript) ->
   global[name] = func for name, func of require 'assert'
 
   # Convenience aliases.
-  global.CoffeeScript = CoffeeScript
-  global.Repl = require './lib/coffee-script/repl'
+  global.KavaScript = KavaScript
+  global.Repl = require './lib/kavascript/repl'
 
   # Our test helper function for delimiting different test cases.
   global.test = (description, fn) ->
@@ -280,26 +281,26 @@ runTests = (CoffeeScript) ->
   # Ignore generators test file if generators are not available
   generatorsAreAvailable = '--harmony' in process.execArgv or
     '--harmony-generators' in process.execArgv
-  files.splice files.indexOf('generators.coffee'), 1 if not generatorsAreAvailable
+  files.splice files.indexOf('generators.ks'), 1 if not generatorsAreAvailable
 
   for file in files when helpers.isCoffee file
-    literate = helpers.isLiterate file
+    verbose = helpers.isVerbose file
     currentFile = filename = path.join 'test', file
     code = fs.readFileSync filename
     try
-      CoffeeScript.run code.toString(), {filename, literate}
+      KavaScript.run code.toString(), {filename, verbose}
     catch error
       failures.push {filename, error}
   return !failures.length
 
 
-task 'test', 'run the CoffeeScript language test suite', ->
-  runTests CoffeeScript
+task 'test', 'run the KavaScript language test suite', ->
+  runTests KavaScript
 
 
 task 'test:browser', 'run the test suite against the merged browser script', ->
-  source = fs.readFileSync 'extras/coffee-script.js', 'utf-8'
+  source = fs.readFileSync 'extras/kavascript.js', 'utf-8'
   result = {}
   global.testingBrowser = yes
   (-> eval source).call result
-  runTests result.CoffeeScript
+  runTests result.KavaScript

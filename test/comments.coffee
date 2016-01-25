@@ -222,7 +222,7 @@ test "#3132: Format single-line block comment nicely", ->
 
 
   """
-  eq CoffeeScript.compile(input, bare: on), result
+  eq KavaScript.compile(input, bare: on), result
 
 test "#3132: Format multi-line block comment nicely", ->
   input = """
@@ -242,7 +242,7 @@ test "#3132: Format multi-line block comment nicely", ->
 
 
   """
-  eq CoffeeScript.compile(input, bare: on), result
+  eq KavaScript.compile(input, bare: on), result
 
 test "#3132: Format simple block comment nicely", ->
   input = """
@@ -261,7 +261,7 @@ test "#3132: Format simple block comment nicely", ->
 
   """
 
-  eq CoffeeScript.compile(input, bare: on), result
+  eq KavaScript.compile(input, bare: on), result
 
 test "#3132: Format indented block-comment nicely", ->
   input = """
@@ -285,7 +285,7 @@ test "#3132: Format indented block-comment nicely", ->
   };
 
   """
-  eq CoffeeScript.compile(input, bare: on), result
+  eq KavaScript.compile(input, bare: on), result
 
 # Although adequately working, block comment-placement is not yet perfect.
 # (Considering a case where multiple variables have been declared …)
@@ -313,7 +313,7 @@ test "#3132: Format jsdoc-style block-comment nicely", ->
   };
   
   """
-  eq CoffeeScript.compile(input, bare: on), result
+  eq KavaScript.compile(input, bare: on), result
 
 # Although adequately working, block comment-placement is not yet perfect.
 # (Considering a case where multiple variables have been declared …)
@@ -341,7 +341,7 @@ test "#3132: Format hand-made (raw) jsdoc-style block-comment nicely", ->
   };
   
   """
-  eq CoffeeScript.compile(input, bare: on), result
+  eq KavaScript.compile(input, bare: on), result
 
 # Although adequately working, block comment-placement is not yet perfect.
 # (Considering a case where multiple variables have been declared …)
@@ -398,7 +398,7 @@ test "#3132: Place block-comments nicely", ->
   })();
   
   """
-  eq CoffeeScript.compile(input, bare: on), result
+  eq KavaScript.compile(input, bare: on), result
 
 test "#3638: Demand a whitespace after # symbol", ->
   input = """
@@ -417,7 +417,7 @@ test "#3638: Demand a whitespace after # symbol", ->
 
   """
 
-  eq CoffeeScript.compile(input, bare: on), result
+  eq KavaScript.compile(input, bare: on), result
 
 test "#3761: Multiline comment at end of an object", ->
   anObject =

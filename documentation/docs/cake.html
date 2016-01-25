@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>cake.coffee</title>
+  <title>kake.ks</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -21,77 +21,77 @@
               
                 
                 <a class="source" href="browser.html">
-                  browser.coffee
+                  browser.ks
                 </a>
               
                 
-                <a class="source" href="cake.html">
-                  cake.coffee
+                <a class="source" href="kake.html">
+                  kake.ks
                 </a>
               
                 
-                <a class="source" href="coffee-script.html">
-                  coffee-script.coffee
+                <a class="source" href="kavascript.html">
+                  kavascript.ks
                 </a>
               
                 
                 <a class="source" href="command.html">
-                  command.coffee
+                  command.ks
                 </a>
               
                 
                 <a class="source" href="grammar.html">
-                  grammar.coffee
+                  grammar.ks
                 </a>
               
                 
                 <a class="source" href="helpers.html">
-                  helpers.coffee
+                  helpers.ks
                 </a>
               
                 
                 <a class="source" href="index.html">
-                  index.coffee
+                  index.ks
                 </a>
               
                 
                 <a class="source" href="lexer.html">
-                  lexer.coffee
+                  lexer.ks
                 </a>
               
                 
                 <a class="source" href="nodes.html">
-                  nodes.coffee
+                  nodes.ks
                 </a>
               
                 
                 <a class="source" href="optparse.html">
-                  optparse.coffee
+                  optparse.ks
                 </a>
               
                 
                 <a class="source" href="register.html">
-                  register.coffee
+                  register.ks
                 </a>
               
                 
                 <a class="source" href="repl.html">
-                  repl.coffee
+                  repl.ks
                 </a>
               
                 
                 <a class="source" href="rewriter.html">
-                  rewriter.coffee
+                  rewriter.ks
                 </a>
               
                 
                 <a class="source" href="scope.html">
-                  scope.litcoffee
+                  scope.vks
                 </a>
               
                 
                 <a class="source" href="sourcemap.html">
-                  sourcemap.litcoffee
+                  sourcemap.vks
                 </a>
               
             </div>
@@ -103,7 +103,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>cake.coffee</h1>
+                  <h1>kake.ks</h1>
               </div>
           </li>
         
@@ -115,12 +115,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p><code>cake</code> is a simplified version of <a href="http://www.gnu.org/software/make/">Make</a>
+              <p><code>kake</code> is a simplified version of <a href="http://www.gnu.org/software/make/">Make</a>
 (<a href="http://rake.rubyforge.org/">Rake</a>, <a href="http://github.com/280north/jake">Jake</a>)
-for CoffeeScript. You define tasks with names and descriptions in a Cakefile,
+for KavaScript. You define tasks with names and descriptions in a Kakefile,
 and can call them from the command line, or invoke them from other tasks.</p>
-<p>Running <code>cake</code> with no arguments will print out a list of all the tasks in the
-current directory’s Cakefile.</p>
+<p>Running <code>kake</code> with no arguments will print out a list of all the tasks in the
+current directory’s Kakefile.</p>
 
             </div>
             
@@ -141,7 +141,7 @@ current directory’s Cakefile.</p>
 path         = <span class="hljs-built_in">require</span> <span class="hljs-string">'path'</span>
 helpers      = <span class="hljs-built_in">require</span> <span class="hljs-string">'./helpers'</span>
 optparse     = <span class="hljs-built_in">require</span> <span class="hljs-string">'./optparse'</span>
-CoffeeScript = <span class="hljs-built_in">require</span> <span class="hljs-string">'./coffee-script'</span></pre></div></div>
+KavaScript = <span class="hljs-built_in">require</span> <span class="hljs-string">'./kavascript'</span></pre></div></div>
             
         </li>
         
@@ -152,11 +152,11 @@ CoffeeScript = <span class="hljs-built_in">require</span> <span class="hljs-stri
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>Register .coffee extension</p>
+              <p>Register .ks extension</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>CoffeeScript.register()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>KavaScript.register()</pre></div></div>
             
         </li>
         
@@ -185,7 +185,7 @@ oparse    = <span class="hljs-literal">null</span></pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p>Mixin the top-level Cake functions for Cakefiles to use directly.</p>
+              <p>Mixin the top-level Kake functions for Kakefiles to use directly.</p>
 
             </div>
             
@@ -200,7 +200,7 @@ oparse    = <span class="hljs-literal">null</span></pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>Define a Cake task with a short name, an optional sentence description,
+              <p>Define a Kake task with a short name, an optional sentence description,
 and the function to run as the action itself.</p>
 
             </div>
@@ -218,7 +218,7 @@ and the function to run as the action itself.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>Define an option that the Cakefile accepts. The parsed options hash,
+              <p>Define an option that the Kakefile accepts. The parsed options hash,
 containing all of the command-line options passed, will be made available
 as the first argument to the action.</p>
 
@@ -236,7 +236,7 @@ as the first argument to the action.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <p>Invoke another task in the current Cakefile.</p>
+              <p>Invoke another task in the current Kakefile.</p>
 
             </div>
             
@@ -253,18 +253,18 @@ as the first argument to the action.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <p>Run <code>cake</code>. Executes all of the tasks you pass, in order. Note that Node’s
+              <p>Run <code>kake</code>. Executes all of the tasks you pass, in order. Note that Node’s
 asynchrony may cause tasks to execute in a different order than you’d expect.
 If no tasks are passed, print the help screen. Keep a reference to the
-original directory name, when running Cake tasks from subdirectories.</p>
+original directory name, when running Kake tasks from subdirectories.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-built_in">exports</span>.<span class="hljs-function"><span class="hljs-title">run</span> = -&gt;</span>
   <span class="hljs-built_in">global</span>.__originalDirname = fs.realpathSync <span class="hljs-string">'.'</span>
-  process.chdir cakefileDirectory __originalDirname
+  process.chdir kakefileDirectory __originalDirname
   args = process.argv[<span class="hljs-number">2.</span>.]
-  CoffeeScript.run fs.readFileSync(<span class="hljs-string">'Cakefile'</span>).toString(), <span class="hljs-attribute">filename</span>: <span class="hljs-string">'Cakefile'</span>
+  KavaScript.run fs.readFileSync(<span class="hljs-string">'Kakefile'</span>).toString(), <span class="hljs-attribute">filename</span>: <span class="hljs-string">'Kakefile'</span>
   oparse = <span class="hljs-keyword">new</span> optparse.OptionParser switches
   <span class="hljs-keyword">return</span> printTasks() <span class="hljs-keyword">unless</span> args.length
   <span class="hljs-keyword">try</span>
@@ -282,19 +282,19 @@ original directory name, when running Cake tasks from subdirectories.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <p>Display the list of Cake tasks in a format similar to <code>rake -T</code></p>
+              <p>Display the list of Kake tasks in a format similar to <code>rake -T</code></p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-title">printTasks</span> = -&gt;</span>
   relative = path.relative <span class="hljs-keyword">or</span> path.resolve
-  cakefilePath = path.join relative(__originalDirname, process.cwd()), <span class="hljs-string">'Cakefile'</span>
-  <span class="hljs-built_in">console</span>.log <span class="hljs-string">"<span class="hljs-subst">#{cakefilePath}</span> defines the following tasks:\n"</span>
+  kakefilePath = path.join relative(__originalDirname, process.cwd()), <span class="hljs-string">'Kakefile'</span>
+  <span class="hljs-built_in">console</span>.log <span class="hljs-string">"<span class="hljs-subst">#{kakefilePath}</span> defines the following tasks:\n"</span>
   <span class="hljs-keyword">for</span> name, task <span class="hljs-keyword">of</span> tasks
     spaces = <span class="hljs-number">20</span> - name.length
     spaces = <span class="hljs-keyword">if</span> spaces &gt; <span class="hljs-number">0</span> <span class="hljs-keyword">then</span> Array(spaces + <span class="hljs-number">1</span>).join(<span class="hljs-string">' '</span>) <span class="hljs-keyword">else</span> <span class="hljs-string">''</span>
     desc   = <span class="hljs-keyword">if</span> task.description <span class="hljs-keyword">then</span> <span class="hljs-string">"# <span class="hljs-subst">#{task.description}</span>"</span> <span class="hljs-keyword">else</span> <span class="hljs-string">''</span>
-    <span class="hljs-built_in">console</span>.log <span class="hljs-string">"cake <span class="hljs-subst">#{name}</span><span class="hljs-subst">#{spaces}</span> <span class="hljs-subst">#{desc}</span>"</span>
+    <span class="hljs-built_in">console</span>.log <span class="hljs-string">"kake <span class="hljs-subst">#{name}</span><span class="hljs-subst">#{spaces}</span> <span class="hljs-subst">#{desc}</span>"</span>
   <span class="hljs-built_in">console</span>.log oparse.help() <span class="hljs-keyword">if</span> switches.length</pre></div></div>
             
         </li>
@@ -312,7 +312,7 @@ original directory name, when running Cake tasks from subdirectories.</p>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-title">fatalError</span> = <span class="hljs-params">(message)</span> -&gt;</span>
   <span class="hljs-built_in">console</span>.error message + <span class="hljs-string">'\n'</span>
-  <span class="hljs-built_in">console</span>.log <span class="hljs-string">'To see a list of all tasks/options, run "cake"'</span>
+  <span class="hljs-built_in">console</span>.log <span class="hljs-string">'To see a list of all tasks/options, run "kake"'</span>
   process.exit <span class="hljs-number">1</span>
 
 <span class="hljs-function"><span class="hljs-title">missingTask</span> = <span class="hljs-params">(task)</span> -&gt;</span> fatalError <span class="hljs-string">"No such task: <span class="hljs-subst">#{task}</span>"</span></pre></div></div>
@@ -326,16 +326,16 @@ original directory name, when running Cake tasks from subdirectories.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
-              <p>When <code>cake</code> is invoked, search in the current and all parent directories
-to find the relevant Cakefile.</p>
+              <p>When <code>kake</code> is invoked, search in the current and all parent directories
+to find the relevant Kakefile.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-title">cakefileDirectory</span> = <span class="hljs-params">(dir)</span> -&gt;</span>
-  <span class="hljs-keyword">return</span> dir <span class="hljs-keyword">if</span> fs.existsSync path.join dir, <span class="hljs-string">'Cakefile'</span>
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-title">kakefileDirectory</span> = <span class="hljs-params">(dir)</span> -&gt;</span>
+  <span class="hljs-keyword">return</span> dir <span class="hljs-keyword">if</span> fs.existsSync path.join dir, <span class="hljs-string">'Kakefile'</span>
   parent = path.normalize path.join dir, <span class="hljs-string">'..'</span>
-  <span class="hljs-keyword">return</span> cakefileDirectory parent <span class="hljs-keyword">unless</span> parent <span class="hljs-keyword">is</span> dir
-  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Error <span class="hljs-string">"Cakefile not found in <span class="hljs-subst">#{process.cwd()}</span>"</span></pre></div></div>
+  <span class="hljs-keyword">return</span> kakefileDirectory parent <span class="hljs-keyword">unless</span> parent <span class="hljs-keyword">is</span> dir
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Error <span class="hljs-string">"Kakefile not found in <span class="hljs-subst">#{process.cwd()}</span>"</span></pre></div></div>
             
         </li>
         

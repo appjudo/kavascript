@@ -1,11 +1,12 @@
+*.ks
 *.coffee
 *.html
 .DS_Store
 .git*
-Cakefile
+Kakefile
 documentation/
 examples/
-extras/coffee-script.js
+extras/kavascript.js
 raw/
 src/
 test/

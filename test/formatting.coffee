@@ -7,7 +7,7 @@
 #   string literals -> string literals
 #   function invocations -> function invocations
 
-doesNotThrow -> CoffeeScript.compile "a = then b"
+doesNotThrow -> KavaScript.compile "a = then b"
 
 test "multiple semicolon-separated statements in parentheticals", ->
   nonce = {}
@@ -75,13 +75,13 @@ test "`?.` and `::` should continue lines", ->
   #::
   #?.foo
 
-doesNotThrow -> CoffeeScript.compile """
+doesNotThrow -> KavaScript.compile """
   oh. yes
   oh?. true
   oh:: return
   """
 
-doesNotThrow -> CoffeeScript.compile """
+doesNotThrow -> KavaScript.compile """
   a?[b..]
   a?[...b]
   a?[b..c]
@@ -100,7 +100,7 @@ test "indented array literals don't trigger whitespace rewriting", ->
 
 # Function Invocations
 
-doesNotThrow -> CoffeeScript.compile """
+doesNotThrow -> KavaScript.compile """
   obj = then fn 1,
     1: 1
     a:
@@ -200,7 +200,7 @@ test "#1495, method call chaining", ->
 
 # Nested blocks caused by paren unwrapping
 test "#1492: Nested blocks don't cause double semicolons", ->
-  js = CoffeeScript.compile '(0;0)'
+  js = KavaScript.compile '(0;0)'
   eq -1, js.indexOf ';;'
 
 test "#1195 Ignore trailing semicolons (before newlines or as the last char in a program)", ->
@@ -211,14 +211,14 @@ test "#1195 Ignore trailing semicolons (before newlines or as the last char in a
     nonce2
     unless f() is nonce then throw new Error('; before linebreak should = newline')
     """
-  CoffeeScript.run(preNewline(n), bare: true) for n in [1,2,3]
+  KavaScript.run(preNewline(n), bare: true) for n in [1,2,3]
 
   lastChar = '-> lastChar;'
-  doesNotThrow -> CoffeeScript.compile lastChar, bare: true
+  doesNotThrow -> KavaScript.compile lastChar, bare: true
 
 test "#1299: Disallow token misnesting", ->
   try
-    CoffeeScript.compile '''
+    KavaScript.compile '''
       [{
          ]}
     '''
@@ -228,13 +228,13 @@ test "#1299: Disallow token misnesting", ->
 
 test "#2981: Enforce initial indentation", ->
   try
-    CoffeeScript.compile '  a\nb-'
+    KavaScript.compile '  a\nb-'
     ok no
   catch e
     eq 'missing indentation', e.message
 
 test "'single-line' expression containing multiple lines", ->
-  doesNotThrow -> CoffeeScript.compile """
+  doesNotThrow -> KavaScript.compile """
     (a, b) -> if a
       -a
     else if b

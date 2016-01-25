@@ -118,11 +118,11 @@ test "@-parameters: automatically assign an argument's value to a property of th
 
   # the argument should not be able to be referenced normally
   code = '((@prop) -> prop).call {}'
-  doesNotThrow -> CoffeeScript.compile code
-  throws (-> CoffeeScript.run code), ReferenceError
+  doesNotThrow -> KavaScript.compile code
+  throws (-> KavaScript.run code), ReferenceError
   code = '((@prop) -> _at_prop).call {}'
-  doesNotThrow -> CoffeeScript.compile code
-  throws (-> CoffeeScript.run code), ReferenceError
+  doesNotThrow -> KavaScript.compile code
+  throws (-> KavaScript.run code), ReferenceError
 
 test "@-parameters and splats with constructors", ->
   a = {}
@@ -222,8 +222,8 @@ test "#156: parameter lists with expansion", ->
     last
   eq 5, expandArguments 1, 2, 3, 4, 5
 
-  throws (-> CoffeeScript.compile "(..., a, b...) ->"), null, "prohibit expansion and a splat"
-  throws (-> CoffeeScript.compile "(...) ->"),          null, "prohibit lone expansion"
+  throws (-> KavaScript.compile "(..., a, b...) ->"), null, "prohibit expansion and a splat"
+  throws (-> KavaScript.compile "(...) ->"),          null, "prohibit lone expansion"
 
 test "#156: parameter lists with expansion in array destructuring", ->
   expandArray = (..., [..., last]) ->
@@ -245,10 +245,10 @@ test "variable definitions and splat", ->
   eq 0, b
 
 test "default values with function calls", ->
-  doesNotThrow -> CoffeeScript.compile "(x = f()) ->"
+  doesNotThrow -> KavaScript.compile "(x = f()) ->"
 
 test "arguments vs parameters", ->
-  doesNotThrow -> CoffeeScript.compile "f(x) ->"
+  doesNotThrow -> KavaScript.compile "f(x) ->"
   f = (g) -> g()
   eq 5, f (x) -> 5
 
@@ -315,7 +315,7 @@ test "#1435 Indented property access", ->
     1
 
 test "#1038 Optimize trailing return statements", ->
-  compile = (code) -> CoffeeScript.compile(code, bare: yes).trim().replace(/\s+/g, " ")
+  compile = (code) -> KavaScript.compile(code, bare: yes).trim().replace(/\s+/g, " ")
 
   eq "(function() {});",                 compile("->")
   eq "(function() {});",                 compile("-> return")

@@ -1,6 +1,6 @@
 /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
 /* Original code:; http://softwaremaniacs.org/media/soft/highlight/styles/tomorrow.css */
-/* But forked for CoffeeScript */
+/* But forked for KavaScript */
 .tomorrow-comment, pre .comment, pre .title {
   color: #8e908c;
 }
@@ -25,7 +25,7 @@
   color: #3e999f;
 }
 
-.tomorrow-blue, pre .function, pre .function .title, pre .python .decorator, pre .python .title, pre .ruby .function .title, pre .ruby .title .keyword, pre .perl .sub, pre .javascript .title, pre .coffeescript .title {
+.tomorrow-blue, pre .function, pre .function .title, pre .python .decorator, pre .python .title, pre .ruby .function .title, pre .ruby .title .keyword, pre .perl .sub, pre .javascript .title, pre .kavascript .title {
   color: #21439C;
 }
 
@@ -55,7 +55,7 @@ pre code {
   color: #000000;
 }
 
-pre .coffeescript .javascript,
+pre .kavascript .javascript,
 pre .javascript .xml,
 pre .tex .formula,
 pre .xml .javascript,

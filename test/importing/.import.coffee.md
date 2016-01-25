@@ -1,3 +1,3 @@
-Required by ../importing.coffee
+Required by ../importing.ks
 
     module.exports = {value: -> 3}

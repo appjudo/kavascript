@@ -197,7 +197,7 @@ test "invoking functions with implicit object literals", ->
   ok result.length is 4
   ok result[2].b is 1
 
-  throws -> CoffeeScript.compile "a = b:1, c"
+  throws -> KavaScript.compile "a = b:1, c"
 
 test "some weird indentation in YAML-style object literals", ->
   two = (a, b) -> b
@@ -370,8 +370,8 @@ test "#1322: implicit call against implicit object with block comments", ->
     y: 3
 
 test "#1513: Top level bare objs need to be wrapped in parens for unary and existence ops", ->
-  doesNotThrow -> CoffeeScript.run "{}?", bare: true
-  doesNotThrow -> CoffeeScript.run "{}.a++", bare: true
+  doesNotThrow -> KavaScript.run "{}?", bare: true
+  doesNotThrow -> KavaScript.run "{}.a++", bare: true
 
 test "#1871: Special case for IMPLICIT_END in the middle of an implicit object", ->
   result = 'result'

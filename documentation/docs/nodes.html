@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>nodes.coffee</title>
+  <title>nodes.ks</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -21,77 +21,77 @@
               
                 
                 <a class="source" href="browser.html">
-                  browser.coffee
+                  browser.ks
                 </a>
               
                 
-                <a class="source" href="cake.html">
-                  cake.coffee
+                <a class="source" href="kake.html">
+                  kake.ks
                 </a>
               
                 
-                <a class="source" href="coffee-script.html">
-                  coffee-script.coffee
+                <a class="source" href="kavascript.html">
+                  kavascript.ks
                 </a>
               
                 
                 <a class="source" href="command.html">
-                  command.coffee
+                  command.ks
                 </a>
               
                 
                 <a class="source" href="grammar.html">
-                  grammar.coffee
+                  grammar.ks
                 </a>
               
                 
                 <a class="source" href="helpers.html">
-                  helpers.coffee
+                  helpers.ks
                 </a>
               
                 
                 <a class="source" href="index.html">
-                  index.coffee
+                  index.ks
                 </a>
               
                 
                 <a class="source" href="lexer.html">
-                  lexer.coffee
+                  lexer.ks
                 </a>
               
                 
                 <a class="source" href="nodes.html">
-                  nodes.coffee
+                  nodes.ks
                 </a>
               
                 
                 <a class="source" href="optparse.html">
-                  optparse.coffee
+                  optparse.ks
                 </a>
               
                 
                 <a class="source" href="register.html">
-                  register.coffee
+                  register.ks
                 </a>
               
                 
                 <a class="source" href="repl.html">
-                  repl.coffee
+                  repl.ks
                 </a>
               
                 
                 <a class="source" href="rewriter.html">
-                  rewriter.coffee
+                  rewriter.ks
                 </a>
               
                 
                 <a class="source" href="scope.html">
-                  scope.litcoffee
+                  scope.vks
                 </a>
               
                 
                 <a class="source" href="sourcemap.html">
-                  sourcemap.litcoffee
+                  sourcemap.vks
                 </a>
               
             </div>
@@ -103,7 +103,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>nodes.coffee</h1>
+                  <h1>nodes.ks</h1>
               </div>
           </li>
         
@@ -115,7 +115,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p><code>nodes.coffee</code> contains all of the node classes for the syntax tree. Most
+              <p><code>nodes.ks</code> contains all of the node classes for the syntax tree. Most
 nodes are created as the result of actions in the <a href="grammar.html">grammar</a>,
 but some are created by other nodes as a method of code generation. To convert
 the syntax tree into a string of JavaScript code, call <code>compile()</code> on the root.</p>
@@ -438,7 +438,7 @@ scope boundaries.</p>
                 <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <p><code>toString</code> representation of the node, for inspecting the parse tree.
-This is what <code>coffee --nodes</code> prints out.</p>
+This is what <code>ks --nodes</code> prints out.</p>
 
             </div>
             
@@ -1299,7 +1299,7 @@ evaluate anything twice when building the soak chain.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-52">&#182;</a>
               </div>
-              <p>CoffeeScript passes through block comments as JavaScript block comments
+              <p>KavaScript passes through block comments as JavaScript block comments
 at the same position.</p>
 
             </div>
@@ -2138,7 +2138,7 @@ is the index of the beginning.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-86">&#182;</a>
               </div>
-              <p>The CoffeeScript class definition.
+              <p>The KavaScript class definition.
 Initialize a <strong>Class</strong> with its name, an optional superclass, and a
 list of prototype property assignments.</p>
 
@@ -3321,7 +3321,7 @@ parameter list.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-133">&#182;</a>
               </div>
-              <p>A while loop, the only sort of low-level loop exposed by CoffeeScript. From
+              <p>A while loop, the only sort of low-level loop exposed by KavaScript. From
 it, all other loops can be manufactured. Useful in cases where you need more
 flexibility or more speed than a comprehension can provide.</p>
 
@@ -3362,7 +3362,7 @@ flexibility or more speed than a comprehension can provide.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-134">&#182;</a>
               </div>
-              <p>The main difference from a JavaScript <em>while</em> is that the CoffeeScript
+              <p>The main difference from a JavaScript <em>while</em> is that the KavaScript
 <em>while</em> can be used as a part of a larger expression — while loops may
 return an array containing the computed result of each iteration.</p>
 
@@ -3413,7 +3413,7 @@ return an array containing the computed result of each iteration.</p>
                 <a class="pilcrow" href="#section-136">&#182;</a>
               </div>
               <p>Simple Arithmetic and logical operations. Performs some conversion from
-CoffeeScript operations into their JavaScript equivalents.</p>
+KavaScript operations into their JavaScript equivalents.</p>
 
             </div>
             
@@ -3440,7 +3440,7 @@ CoffeeScript operations into their JavaScript equivalents.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-137">&#182;</a>
               </div>
-              <p>The map of conversions from CoffeeScript to JavaScript symbols.</p>
+              <p>The map of conversions from KavaScript to JavaScript symbols.</p>
 
             </div>
             
@@ -3594,7 +3594,7 @@ as the chained expression is wrapped.</p>
               </div>
               <p>Mimic Python’s chained comparisons when multiple comparison operators are
 used sequentially. For example:</p>
-<pre><code>bin/coffee -e <span class="hljs-string">'console.log 50 &lt; 65 &gt; 10'</span>
+<pre><code>bin/ks -e <span class="hljs-string">'console.log 50 &lt; 65 &gt; 10'</span>
 <span class="hljs-literal">true</span>
 </code></pre>
             </div>
@@ -4023,7 +4023,7 @@ parentheses, but no longer — you can put in as many as you please.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-159">&#182;</a>
               </div>
-              <p>CoffeeScript’s replacement for the <em>for</em> loop is our array and object
+              <p>KavaScript’s replacement for the <em>for</em> loop is our array and object
 comprehensions, that compile into <em>for</em> loops here. They also act as an
 expression, able to return the result of each filtered iteration.</p>
 <p>Unlike Python array comprehensions, they can be multi-line, and you can pass
@@ -4058,7 +4058,7 @@ you can map and filter in a single pass.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-160">&#182;</a>
               </div>
-              <p>Welcome to the hairiest method in all of CoffeeScript. Handles the inner
+              <p>Welcome to the hairiest method in all of KavaScript. Handles the inner
 loop, filtering, stepping, and result saving for array, object, and range
 comprehensions. Some of the generated code can be shared in common, and
 some cannot.</p>

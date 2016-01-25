@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>repl.coffee</title>
+  <title>repl.ks</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -21,77 +21,77 @@
               
                 
                 <a class="source" href="browser.html">
-                  browser.coffee
+                  browser.ks
                 </a>
               
                 
-                <a class="source" href="cake.html">
-                  cake.coffee
+                <a class="source" href="kake.html">
+                  kake.ks
                 </a>
               
                 
-                <a class="source" href="coffee-script.html">
-                  coffee-script.coffee
+                <a class="source" href="kavascript.html">
+                  kavascript.ks
                 </a>
               
                 
                 <a class="source" href="command.html">
-                  command.coffee
+                  command.ks
                 </a>
               
                 
                 <a class="source" href="grammar.html">
-                  grammar.coffee
+                  grammar.ks
                 </a>
               
                 
                 <a class="source" href="helpers.html">
-                  helpers.coffee
+                  helpers.ks
                 </a>
               
                 
                 <a class="source" href="index.html">
-                  index.coffee
+                  index.ks
                 </a>
               
                 
                 <a class="source" href="lexer.html">
-                  lexer.coffee
+                  lexer.ks
                 </a>
               
                 
                 <a class="source" href="nodes.html">
-                  nodes.coffee
+                  nodes.ks
                 </a>
               
                 
                 <a class="source" href="optparse.html">
-                  optparse.coffee
+                  optparse.ks
                 </a>
               
                 
                 <a class="source" href="register.html">
-                  register.coffee
+                  register.ks
                 </a>
               
                 
                 <a class="source" href="repl.html">
-                  repl.coffee
+                  repl.ks
                 </a>
               
                 
                 <a class="source" href="rewriter.html">
-                  rewriter.coffee
+                  rewriter.ks
                 </a>
               
                 
                 <a class="source" href="scope.html">
-                  scope.litcoffee
+                  scope.vks
                 </a>
               
                 
                 <a class="source" href="sourcemap.html">
-                  sourcemap.litcoffee
+                  sourcemap.vks
                 </a>
               
             </div>
@@ -103,7 +103,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>repl.coffee</h1>
+                  <h1>repl.ks</h1>
               </div>
           </li>
         
@@ -122,12 +122,12 @@
 path = <span class="hljs-built_in">require</span> <span class="hljs-string">'path'</span>
 vm = <span class="hljs-built_in">require</span> <span class="hljs-string">'vm'</span>
 nodeREPL = <span class="hljs-built_in">require</span> <span class="hljs-string">'repl'</span>
-CoffeeScript = <span class="hljs-built_in">require</span> <span class="hljs-string">'./coffee-script'</span>
+KavaScript = <span class="hljs-built_in">require</span> <span class="hljs-string">'./kavascript'</span>
 {merge, updateSyntaxError} = <span class="hljs-built_in">require</span> <span class="hljs-string">'./helpers'</span>
 
 replDefaults =
-  <span class="hljs-attribute">prompt</span>: <span class="hljs-string">'coffee&gt; '</span>,
-  <span class="hljs-attribute">historyFile</span>: path.join process.env.HOME, <span class="hljs-string">'.coffee_history'</span> <span class="hljs-keyword">if</span> process.env.HOME
+  <span class="hljs-attribute">prompt</span>: <span class="hljs-string">'ks&gt; '</span>,
+  <span class="hljs-attribute">historyFile</span>: path.join process.env.HOME, <span class="hljs-string">'.ks_history'</span> <span class="hljs-keyword">if</span> process.env.HOME
   <span class="hljs-attribute">historyMaxInputSize</span>: <span class="hljs-number">10240</span>
   <span class="hljs-attribute">eval</span>: <span class="hljs-function"><span class="hljs-params">(input, context, filename, cb)</span> -&gt;</span></pre></div></div>
             
@@ -192,7 +192,7 @@ parens. Unwrap all that.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      tokens = CoffeeScript.tokens input</pre></div></div>
+            <div class="content"><div class='highlight'><pre>      tokens = KavaScript.tokens input</pre></div></div>
             
         </li>
         
@@ -203,7 +203,7 @@ parens. Unwrap all that.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>Collect referenced variable names just like in <code>CoffeeScript.compile</code>.</p>
+              <p>Collect referenced variable names just like in <code>KavaScript.compile</code>.</p>
 
             </div>
             
@@ -224,7 +224,7 @@ parens. Unwrap all that.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      ast = CoffeeScript.nodes tokens</pre></div></div>
+            <div class="content"><div class='highlight'><pre>      ast = KavaScript.nodes tokens</pre></div></div>
             
         </li>
         
@@ -572,11 +572,11 @@ parens. Unwrap all that.</p>
     [major, minor, build] = process.versions.node.split<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'.'</span>)</span>.<span class="hljs-title">map</span> <span class="hljs-params">(n)</span> -&gt;</span> parseInt(n)
 
     <span class="hljs-keyword">if</span> major <span class="hljs-keyword">is</span> <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> minor &lt; <span class="hljs-number">8</span>
-      <span class="hljs-built_in">console</span>.warn <span class="hljs-string">"Node 0.8.0+ required for CoffeeScript REPL"</span>
+      <span class="hljs-built_in">console</span>.warn <span class="hljs-string">"Node 0.8.0+ required for KavaScript REPL"</span>
       process.exit <span class="hljs-number">1</span>
 
-    CoffeeScript.register()
-    process.argv = [<span class="hljs-string">'coffee'</span>].concat process.argv[<span class="hljs-number">2.</span>.]
+    KavaScript.register()
+    process.argv = [<span class="hljs-string">'ks'</span>].concat process.argv[<span class="hljs-number">2.</span>.]
     opts = merge replDefaults, opts
     repl = nodeREPL.start opts
     runInContext opts.prelude, repl.context, <span class="hljs-string">'prelude'</span> <span class="hljs-keyword">if</span> opts.prelude

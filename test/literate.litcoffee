@@ -1,9 +1,9 @@
-Literate CoffeeScript Test
+Verbose KavaScript Test
 --------------------------
 
 comment comment
 
-    test "basic literate CoffeeScript parsing", ->
+    test "basic verbose KavaScript parsing", ->
       ok yes
       
 now with a...

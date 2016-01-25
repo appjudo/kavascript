@@ -1,5 +1,5 @@
 html = """
        <strong>
-         cup of coffeescript
+         cup of kavascript
        </strong>
        """

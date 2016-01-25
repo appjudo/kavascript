@@ -1,19 +1,19 @@
-# This **Browser** compatibility layer extends core CoffeeScript functions
+# This **Browser** compatibility layer extends core KavaScript functions
 # to make things work smoothly when compiling code directly in the browser.
 # We add support for loading remote Coffee scripts via **XHR**, and
-# `text/coffeescript` script tags, source maps via data-URLs, and so on.
+# `text/kavascript` script tags, source maps via data-URLs, and so on.
 
-CoffeeScript = require './coffee-script'
-CoffeeScript.require = require
-compile = CoffeeScript.compile
+KavaScript = require './kavascript'
+KavaScript.require = require
+compile = KavaScript.compile
 
 # Use standard JavaScript `eval` to eval code.
-CoffeeScript.eval = (code, options = {}) ->
+KavaScript.eval = (code, options = {}) ->
   options.bare ?= on
   eval compile code, options
 
 # Running code does not provide access to this scope.
-CoffeeScript.run = (code, options = {}) ->
+KavaScript.run = (code, options = {}) ->
   options.bare = on
   options.shiftLine = on
   Function(compile code, options)()
@@ -28,11 +28,11 @@ if btoa? and JSON? and unescape? and encodeURIComponent?
   compile = (code, options = {}) ->
     options.sourceMap = true
     options.inline = true
-    {js, v3SourceMap} = CoffeeScript.compile code, options
-    "#{js}\n//# sourceMappingURL=data:application/json;base64,#{btoa unescape encodeURIComponent v3SourceMap}\n//# sourceURL=coffeescript"
+    {js, v3SourceMap} = KavaScript.compile code, options
+    "#{js}\n//# sourceMappingURL=data:application/json;base64,#{btoa unescape encodeURIComponent v3SourceMap}\n//# sourceURL=kavascript"
 
 # Load a remote script from the current domain via XHR.
-CoffeeScript.load = (url, callback, options = {}, hold = false) ->
+KavaScript.load = (url, callback, options = {}, hold = false) ->
   options.sourceFiles = [url]
   xhr = if window.ActiveXObject
     new window.ActiveXObject('Microsoft.XMLHTTP')
@@ -44,42 +44,42 @@ CoffeeScript.load = (url, callback, options = {}, hold = false) ->
     if xhr.readyState is 4
       if xhr.status in [0, 200]
         param = [xhr.responseText, options]
-        CoffeeScript.run param... unless hold
+        KavaScript.run param... unless hold
       else
         throw new Error "Could not load #{url}"
       callback param if callback
   xhr.send null
 
-# Activate CoffeeScript in the browser by having it compile and evaluate
-# all script tags with a content-type of `text/coffeescript`.
+# Activate KavaScript in the browser by having it compile and evaluate
+# all script tags with a content-type of `text/kavascript`.
 # This happens on page load.
 runScripts = ->
   scripts = window.document.getElementsByTagName 'script'
-  coffeetypes = ['text/coffeescript', 'text/literate-coffeescript']
-  coffees = (s for s in scripts when s.type in coffeetypes)
+  ksTypes = ['text/kavascript', 'text/verbose-kavascript']
+  ksTags = (s for s in scripts when s.type in ksTypes)
   index = 0
 
   execute = ->
-    param = coffees[index]
+    param = ksTags[index]
     if param instanceof Array
-      CoffeeScript.run param...
+      KavaScript.run param...
       index++
       execute()
 
-  for script, i in coffees
+  for script, i in ksTags
     do (script, i) ->
-      options = literate: script.type is coffeetypes[1]
+      options = verbose: script.type is ksTypes[1]
       source = script.src or script.getAttribute('data-src')
       if source
-        CoffeeScript.load source,
+        KavaScript.load source,
           (param) ->
-            coffees[i] = param
+            ksTags[i] = param
             execute()
           options
           true
       else
         options.sourceFiles = ['embedded']
-        coffees[i] = [script.innerHTML, options]
+        ksTags[i] = [script.innerHTML, options]
 
   execute()
 

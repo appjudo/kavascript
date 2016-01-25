@@ -1,36 +1,39 @@
 {
-  "name": "coffee-script",
-  "description": "Unfancy JavaScript",
+  "name": "kavascript",
+  "description": "A Modern Alternative to Modern JavaScript",
   "keywords": [
+    "kavascript",
     "javascript",
     "language",
     "coffeescript",
-    "compiler"
+    "compiler",
+    "es6",
+    "es7"
   ],
-  "author": "Jeremy Ashkenas",
+  "author": "AppJudo Inc.",
   "version": "1.10.0",
   "license": "MIT",
   "engines": {
     "node": ">=0.8.0"
   },
   "directories": {
-    "lib": "./lib/coffee-script"
+    "lib": "./lib/kavascript"
   },
-  "main": "./lib/coffee-script/coffee-script",
+  "main": "./lib/kavascript/kavascript",
   "bin": {
-    "coffee": "./bin/coffee",
-    "cake": "./bin/cake"
+    "ks": "./bin/ks",
+    "kake": "./bin/kake"
   },
   "preferGlobal": true,
   "scripts": {
-    "test":         "node ./bin/cake test",
-    "test-harmony": "node --harmony ./bin/cake test"
+    "test":         "node ./bin/kake test",
+    "test-harmony": "node --harmony ./bin/kake test"
   },
-  "homepage": "http://coffeescript.org",
-  "bugs": "https://github.com/jashkenas/coffeescript/issues",
+  "homepage": "http://www.kavascript.org/",
+  "bugs": "https://github.com/appjudo/kavascript/issues",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jashkenas/coffeescript.git"
+    "url": "git://github.com/appjudo/kavascript.git"
   },
   "devDependencies": {
     "uglify-js": "~2.2",

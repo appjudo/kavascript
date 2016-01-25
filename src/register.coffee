@@ -1,17 +1,17 @@
-CoffeeScript  = require './coffee-script'
+KavaScript  = require './kavascript'
 child_process = require 'child_process'
 helpers       = require './helpers'
 path          = require 'path'
 
-# Load and run a CoffeeScript file for Node, stripping any `BOM`s.
+# Load and run a KavaScript file for Node, stripping any `BOM`s.
 loadFile = (module, filename) ->
-  answer = CoffeeScript._compileFile filename, false
+  answer = KavaScript._compileFile filename, false
   module._compile answer, filename
 
 # If the installed version of Node supports `require.extensions`, register
-# CoffeeScript as an extension.
+# KavaScript as an extension.
 if require.extensions
-  for ext in CoffeeScript.FILE_EXTENSIONS
+  for ext in KavaScript.FILE_EXTENSIONS
     require.extensions[ext] = loadFile
 
   # Patch Node's module loader to be able to handle multi-dot extensions.
@@ -36,10 +36,10 @@ if require.extensions
     @loaded = true
 
 # If we're on Node, patch `child_process.fork` so that Coffee scripts are able
-# to fork both CoffeeScript files, and JavaScript files, directly.
+# to fork both KavaScript files, and JavaScript files, directly.
 if child_process
   {fork} = child_process
-  binary = require.resolve '../../bin/coffee'
+  binary = require.resolve '../../bin/ks'
   child_process.fork = (path, args, options) ->
     if helpers.isCoffee path
       unless Array.isArray args

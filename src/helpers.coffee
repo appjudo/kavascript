@@ -67,10 +67,10 @@ exports.some = Array::some ? (fn) ->
   return true for e in this when fn e
   false
 
-# Simple function for inverting Literate CoffeeScript code by putting the
-# documentation in comments, producing a string of CoffeeScript code that
+# Simple function for inverting Verbose KavaScript code by putting the
+# documentation in comments, producing a string of KavaScript code that
 # can be compiled "normally".
-exports.invertLiterate = (code) ->
+exports.invertVerbose = (code) ->
   maybe_code = true
   lines = for line in code.split('\n')
     if maybe_code and /^([ ]{4}|[ ]{0,3}\t)/.test line
@@ -114,7 +114,7 @@ exports.locationDataToString = (obj) ->
   else
     "No location data"
 
-# A `.coffee.md` compatible version of `basename`, that returns the file sans-extension.
+# A `.ks.md` compatible version of `basename`, that returns the file sans-extension.
 exports.baseFileName = (file, stripExt = no, useWinPathSep = no) ->
   pathSep = if useWinPathSep then /\\|\// else /\//
   parts = file.split(pathSep)
@@ -122,14 +122,14 @@ exports.baseFileName = (file, stripExt = no, useWinPathSep = no) ->
   return file unless stripExt and file.indexOf('.') >= 0
   parts = file.split('.')
   parts.pop()
-  parts.pop() if parts[parts.length - 1] is 'coffee' and parts.length > 1
+  parts.pop() if parts[parts.length - 1] is 'ks' and parts.length > 1
   parts.join('.')
 
-# Determine if a filename represents a CoffeeScript file.
-exports.isCoffee = (file) -> /\.((lit)?coffee|coffee\.md)$/.test file
+# Determine if a filename represents a KavaScript file.
+exports.isCoffee = (file) -> /\.(v?ks|ks\.md)$/.test file
 
-# Determine if a filename represents a Literate CoffeeScript file.
-exports.isLiterate = (file) -> /\.(litcoffee|coffee\.md)$/.test file
+# Determine if a filename represents a Verbose KavaScript file.
+exports.isVerbose = (file) -> /\.(vks|ks\.md)$/.test file
 
 # Throws a SyntaxError from a given location.
 # The error's `toString` will return an error message following the "standard"
@@ -142,7 +142,7 @@ exports.throwSyntaxError = (message, location) ->
 
   # Instead of showing the compiler's stacktrace, show our custom error message
   # (this is useful when the error bubbles up in Node.js applications that
-  # compile CoffeeScript for example).
+  # compile KavaScript for example).
   error.stack = error.toString()
 
   throw error

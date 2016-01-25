@@ -11,7 +11,7 @@ id = (_) -> if arguments.length is 1 then _ else [arguments...]
 
 # helper to assert that a string should fail compilation
 cantCompile = (code) ->
-  throws -> CoffeeScript.compile code
+  throws -> KavaScript.compile code
 
 test "basic argument passing", ->
 
@@ -63,11 +63,11 @@ test "hanging commas and semicolons in argument list", ->
   2
   eq 2, fn(0, 1;)
   # TODO: this test fails (the string compiles), but should it?
-  #throws -> CoffeeScript.compile "fn(0,1,;)"
-  throws -> CoffeeScript.compile "fn(0,1,;;)"
-  throws -> CoffeeScript.compile "fn(0, 1;,)"
-  throws -> CoffeeScript.compile "fn(,0)"
-  throws -> CoffeeScript.compile "fn(;0)"
+  #throws -> KavaScript.compile "fn(0,1,;)"
+  throws -> KavaScript.compile "fn(0,1,;;)"
+  throws -> KavaScript.compile "fn(0, 1;,)"
+  throws -> KavaScript.compile "fn(,0)"
+  throws -> KavaScript.compile "fn(;0)"
 
 
 test "function invocation", ->
@@ -523,7 +523,7 @@ test "#1416: don't omit one 'new' when compiling 'new new fn()()'", ->
   eq obj.b, argNonceB
 
 test "#1840: accessing the `prototype` after function invocation should compile", ->
-  doesNotThrow -> CoffeeScript.compile 'fn()::prop'
+  doesNotThrow -> KavaScript.compile 'fn()::prop'
 
   nonce = {}
   class Test then id: nonce

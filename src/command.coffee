@@ -1,4 +1,4 @@
-# The `coffee` utility. Handles command-line compilation of CoffeeScript
+# The `ks` utility. Handles command-line compilation of KavaScript
 # into various forms: saved into `.js` files or printed to stdout
 # or recompiled every time the source is saved,
 # printed as a token stream or as the syntax tree, or launch an
@@ -9,14 +9,14 @@ fs             = require 'fs'
 path           = require 'path'
 helpers        = require './helpers'
 optparse       = require './optparse'
-CoffeeScript   = require './coffee-script'
+KavaScript   = require './kavascript'
 {spawn, exec}  = require 'child_process'
 {EventEmitter} = require 'events'
 
 useWinPathSep  = path.sep is '\\'
 
-# Allow CoffeeScript to emit Node.js events.
-helpers.extend CoffeeScript, new EventEmitter
+# Allow KavaScript to emit Node.js events.
+helpers.extend KavaScript, new EventEmitter
 
 printLine = (line) -> process.stdout.write line + '\n'
 printWarn = (line) -> process.stderr.write line + '\n'
@@ -25,19 +25,19 @@ hidden = (file) -> /^\.|~$/.test file
 
 # The help banner that is printed in conjunction with `-h`/`--help`.
 BANNER = '''
-  Usage: coffee [options] path/to/script.coffee -- [args]
+  Usage: ks [options] path/to/script.ks -- [args]
 
-  If called without options, `coffee` will run your script.
+  If called without options, `ks` will run your script.
 '''
 
-# The list of all the valid option flags that `coffee` knows how to handle.
+# The list of all the valid option flags that `ks` knows how to handle.
 SWITCHES = [
   ['-b', '--bare',            'compile without a top-level function wrapper']
   ['-c', '--compile',         'compile to JavaScript and save as .js files']
   ['-e', '--eval',            'pass a string from the command line as input']
   ['-h', '--help',            'display this help message']
-  ['-i', '--interactive',     'run an interactive CoffeeScript REPL']
-  ['-j', '--join [FILE]',     'concatenate the source CoffeeScript before compiling']
+  ['-i', '--interactive',     'run an interactive KavaScript REPL']
+  ['-j', '--join [FILE]',     'concatenate the source KavaScript before compiling']
   ['-m', '--map',             'generate source map and save as .js.map files']
   ['-n', '--nodes',           'print out the parse tree that the parser produces']
   [      '--nodejs [ARGS]',   'pass options directly to the "node" binary']
@@ -46,7 +46,7 @@ SWITCHES = [
   ['-p', '--print',           'print out the compiled JavaScript']
   ['-r', '--require [MODULE*]', 'require the given module before eval or REPL']
   ['-s', '--stdio',           'listen for and compile scripts over stdio']
-  ['-l', '--literate',        'treat stdio as literate style coffee-script']
+  ['-l', '--verbose',        'treat stdio as verbose style kavascript']
   ['-t', '--tokens',          'print out the tokens that the lexer/rewriter produce']
   ['-v', '--version',         'display the version number']
   ['-w', '--watch',           'watch scripts for changes and rerun commands']
@@ -60,7 +60,7 @@ notSources   = {}
 watchedDirs  = {}
 optionParser = null
 
-# Run `coffee` by parsing passed options and determining what action to take.
+# Run `ks` by parsing passed options and determining what action to take.
 # Many flags cause us to divert before compiling anything. Flags passed after
 # `--` will be passed verbatim to your script as arguments in `process.argv`
 exports.run = ->
@@ -80,7 +80,7 @@ exports.run = ->
   return require('./repl').start(replCliOpts)   unless opts.arguments.length
   literals = if opts.run then opts.arguments.splice 1 else []
   process.argv = process.argv[0..1].concat literals
-  process.argv[0] = 'coffee'
+  process.argv[0] = 'ks'
 
   opts.output = path.resolve opts.output  if opts.output
   if opts.join
@@ -92,11 +92,11 @@ exports.run = ->
     If for some reason it's necessary to share local variables between files,
     replace...
 
-        $ coffee --compile --join bundle.js -- a.coffee b.coffee c.coffee
+        $ ks --compile --join bundle.js -- a.ks b.ks c.ks
 
     with...
 
-        $ cat a.coffee b.coffee c.coffee | coffee --compile --stdio > bundle.js
+        $ cat a.ks b.ks c.ks | ks --compile --stdio > bundle.js
 
     '''
   for source in opts.arguments
@@ -111,7 +111,7 @@ makePrelude = (requires) ->
   .join ';'
 
 # Compile a path, which could be a script or a directory. If a directory
-# is passed, recursively compile all '.coffee', '.litcoffee', and '.coffee.md'
+# is passed, recursively compile all '.ks', '.vks', and '.ks.md'
 # extension source files in it and all subdirectories.
 compilePath = (source, topLevel, base) ->
   return if source in sources   or
@@ -152,13 +152,13 @@ compilePath = (source, topLevel, base) ->
     notSources[source] = yes
 
 findDirectoryIndex = (source) ->
-  for ext in CoffeeScript.FILE_EXTENSIONS
+  for ext in KavaScript.FILE_EXTENSIONS
     index = path.join source, "index#{ext}"
     try
       return index if (fs.statSync index).isFile()
     catch err
       throw err unless err.code is 'ENOENT'
-  console.error "Missing index.coffee or index.litcoffee in #{source}"
+  console.error "Missing index.ks or index.vks in #{source}"
   process.exit 1
 
 # Compile a single source script, containing the given code, according to the
@@ -169,34 +169,34 @@ compileScript = (file, input, base = null) ->
   options = compileOptions file, base
   try
     t = task = {file, input, options}
-    CoffeeScript.emit 'compile', task
+    KavaScript.emit 'compile', task
     if o.tokens
-      printTokens CoffeeScript.tokens t.input, t.options
+      printTokens KavaScript.tokens t.input, t.options
     else if o.nodes
-      printLine CoffeeScript.nodes(t.input, t.options).toString().trim()
+      printLine KavaScript.nodes(t.input, t.options).toString().trim()
     else if o.run
-      CoffeeScript.register()
-      CoffeeScript.eval opts.prelude, t.options if opts.prelude
-      CoffeeScript.run t.input, t.options
+      KavaScript.register()
+      KavaScript.eval opts.prelude, t.options if opts.prelude
+      KavaScript.run t.input, t.options
     else if o.join and t.file isnt o.join
-      t.input = helpers.invertLiterate t.input if helpers.isLiterate file
+      t.input = helpers.invertVerbose t.input if helpers.isVerbose file
       sourceCode[sources.indexOf(t.file)] = t.input
       compileJoin()
     else
-      compiled = CoffeeScript.compile t.input, t.options
+      compiled = KavaScript.compile t.input, t.options
       t.output = compiled
       if o.map
         t.output = compiled.js
         t.sourceMap = compiled.v3SourceMap
 
-      CoffeeScript.emit 'success', task
+      KavaScript.emit 'success', task
       if o.print
         printLine t.output.trim()
       else if o.compile or o.map
         writeJs base, t.file, t.output, options.jsPath, t.sourceMap
   catch err
-    CoffeeScript.emit 'failure', err, task
-    return if CoffeeScript.listeners('failure').length
+    KavaScript.emit 'failure', err, task
+    return if KavaScript.listeners('failure').length
     message = err.stack or "#{err}"
     if o.watch
       printLine message + '\x07'
@@ -224,7 +224,7 @@ compileJoin = ->
     joinTimeout = wait 100, ->
       compileScript opts.join, sourceCode.join('\n'), opts.join
 
-# Watch a source CoffeeScript file using `fs.watch`, recompiling it every
+# Watch a source KavaScript file using `fs.watch`, recompiling it every
 # time the file is updated. May be used in combination with other options,
 # such as `--print`.
 watch = (source, base) ->
@@ -405,11 +405,11 @@ parseOptions = ->
   o.run         = not (o.compile or o.print or o.map)
   o.print       = !!  (o.print or (o.eval or o.stdio and o.compile))
 
-# The compile-time options to pass to the CoffeeScript compiler.
+# The compile-time options to pass to the KavaScript compiler.
 compileOptions = (filename, base) ->
   answer = {
     filename
-    literate: opts.literate or helpers.isLiterate(filename)
+    verbose: opts.verbose or helpers.isVerbose(filename)
     bare: opts.bare
     header: opts.compile and not opts['no-header']
     sourceMap: opts.map
@@ -451,4 +451,4 @@ usage = ->
 
 # Print the `--version` message and exit.
 version = ->
-  printLine "CoffeeScript version #{CoffeeScript.VERSION}"
+  printLine "KavaScript version #{KavaScript.VERSION}"

@@ -1,4 +1,4 @@
-# The CoffeeScript Lexer. Uses a series of token-matching regexes to attempt
+# The KavaScript Lexer. Uses a series of token-matching regexes to attempt
 # matches against the beginning of the source code. When a match is found,
 # a token is produced, we consume the match, and start again. Tokens are in the
 # form:
@@ -7,18 +7,18 @@
 #
 # where locationData is {first_line, first_column, last_line, last_column}, which is a
 # format that can be fed directly into [Jison](http://github.com/zaach/jison).  These
-# are read by jison in the `parser.lexer` function defined in coffee-script.coffee.
+# are read by jison in the `parser.lexer` function defined in kavascript.ks.
 
 {Rewriter, INVERSES} = require './rewriter'
 
 # Import the helpers we need.
-{count, starts, compact, repeat, invertLiterate,
+{count, starts, compact, repeat, invertVerbose,
 locationDataToString,  throwSyntaxError} = require './helpers'
 
 # The Lexer Class
 # ---------------
 
-# The Lexer class reads a stream of CoffeeScript and divvies it up into tagged
+# The Lexer class reads a stream of KavaScript and divvies it up into tagged
 # tokens. Some potential ambiguity in the grammar has been avoided by
 # pushing some extra smarts into the Lexer.
 exports.Lexer = class Lexer
@@ -34,7 +34,7 @@ exports.Lexer = class Lexer
   #
   # Before returning the token stream, run it through the [Rewriter](rewriter.html).
   tokenize: (code, opts = {}) ->
-    @literate   = opts.literate  # Are we lexing literate CoffeeScript?
+    @verbose   = opts.verbose  # Are we lexing verbose KavaScript?
     @indent     = 0              # The current indentation level.
     @baseIndent = 0              # The overall minimum indentation level
     @indebt     = 0              # The over-indentation at the current level.
@@ -79,7 +79,7 @@ exports.Lexer = class Lexer
     (new Rewriter).rewrite @tokens
 
   # Preprocess the code to remove leading and trailing whitespace, carriage
-  # returns, etc. If we're lexing literate CoffeeScript, strip external Markdown
+  # returns, etc. If we're lexing verbose KavaScript, strip external Markdown
   # by removing all lines that aren't indented by at least four spaces or a tab.
   clean: (code) ->
     code = code.slice(1) if code.charCodeAt(0) is BOM
@@ -87,7 +87,7 @@ exports.Lexer = class Lexer
     if WHITESPACE.test code
       code = "\n#{code}"
       @chunkLine--
-    code = invertLiterate code if @literate
+    code = invertVerbose code if @verbose
     code
 
   # Tokenizers
@@ -95,7 +95,7 @@ exports.Lexer = class Lexer
 
   # Matches identifying literals: variables, keywords, method names, etc.
   # Check to ensure that JavaScript reserved words aren't being used as
-  # identifiers. Because CoffeeScript reserves a handful of keywords that are
+  # identifiers. Because KavaScript reserves a handful of keywords that are
   # allowed in JavaScript, we're careful not to tag them as keywords when
   # referenced as property names here, so you can still do `jQuery.is()` even
   # though `is` means `===` otherwise.
@@ -743,7 +743,7 @@ exports.Lexer = class Lexer
 # Constants
 # ---------
 
-# Keywords that CoffeeScript shares in common with JavaScript.
+# Keywords that KavaScript shares in common with JavaScript.
 JS_KEYWORDS = [
   'true', 'false', 'null', 'this'
   'new', 'delete', 'typeof', 'in', 'instanceof'
@@ -752,7 +752,7 @@ JS_KEYWORDS = [
   'class', 'extends', 'super'
 ]
 
-# CoffeeScript-only keywords.
+# KavaScript-only keywords.
 COFFEE_KEYWORDS = ['undefined', 'then', 'unless', 'until', 'loop', 'of', 'by', 'when']
 
 COFFEE_ALIAS_MAP =
@@ -770,7 +770,7 @@ COFFEE_ALIASES  = (key for key of COFFEE_ALIAS_MAP)
 COFFEE_KEYWORDS = COFFEE_KEYWORDS.concat COFFEE_ALIASES
 
 # The list of keywords that are reserved by JavaScript, but not used, or are
-# used by CoffeeScript internally. We throw an error when these are encountered,
+# used by KavaScript internally. We throw an error when these are encountered,
 # to avoid having a JavaScript error at runtime.
 RESERVED = [
   'case', 'default', 'function', 'var', 'void', 'with', 'const', 'let', 'enum'

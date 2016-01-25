@@ -16,7 +16,7 @@ x = () ->
 '''
 
 test "Verify location of generated tokens", ->
-  tokens = CoffeeScript.tokens "a = 79"
+  tokens = KavaScript.tokens "a = 79"
 
   eq tokens.length, 4
   [aToken, equalsToken, numberToken] = tokens
@@ -37,7 +37,7 @@ test "Verify location of generated tokens", ->
   eq numberToken[2].last_column, 5
 
 test "Verify location of generated tokens (with indented first line)", ->
-  tokens = CoffeeScript.tokens "  a = 83"
+  tokens = KavaScript.tokens "  a = 83"
 
   eq tokens.length, 4
   [aToken, equalsToken, numberToken] = tokens
@@ -58,7 +58,7 @@ test "Verify location of generated tokens (with indented first line)", ->
   eq numberToken[2].last_column, 7
 
 getMatchingTokens = (str, wantedTokens...) ->
-  tokens = CoffeeScript.tokens str
+  tokens = KavaScript.tokens str
   matchingTokens = []
   i = 0
   for token in tokens
@@ -424,13 +424,13 @@ test 'Verify locations in heregex interpolation (in ///regex///, multiple interp
   eq c[2].last_column, 3
 
 test "#3822: Simple string/regex start/end should include delimiters", ->
-  [stringToken] = CoffeeScript.tokens "'string'"
+  [stringToken] = KavaScript.tokens "'string'"
   eq stringToken[2].first_line, 0
   eq stringToken[2].first_column, 0
   eq stringToken[2].last_line, 0
   eq stringToken[2].last_column, 7
 
-  [regexToken] = CoffeeScript.tokens "/regex/"
+  [regexToken] = KavaScript.tokens "/regex/"
   eq regexToken[2].first_line, 0
   eq regexToken[2].first_column, 0
   eq regexToken[2].last_line, 0
@@ -438,8 +438,8 @@ test "#3822: Simple string/regex start/end should include delimiters", ->
 
 test "#3621: Multiline regex and manual `Regex` call with interpolation should
       result in the same tokens", ->
-  tokensA = CoffeeScript.tokens '(RegExp(".*#{a}[0-9]"))'
-  tokensB = CoffeeScript.tokens '///.*#{a}[0-9]///'
+  tokensA = KavaScript.tokens '(RegExp(".*#{a}[0-9]"))'
+  tokensB = KavaScript.tokens '///.*#{a}[0-9]///'
   eq tokensA.length, tokensB.length
   for i in [0...tokensA.length] by 1
     tokenA = tokensA[i]
@@ -452,6 +452,6 @@ test "#3621: Multiline regex and manual `Regex` call with interpolation should
 
 test "Verify all tokens get a location", ->
   doesNotThrow ->
-    tokens = CoffeeScript.tokens testScript
+    tokens = KavaScript.tokens testScript
     for token in tokens
         ok !!token[2]

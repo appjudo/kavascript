@@ -1,8 +1,8 @@
 ###
-Example of embedding the CoffeeScript REPL, strikingly similar to the Node REPL.
+Example of embedding the KavaScript REPL, strikingly similar to the Node REPL.
 ###
 
-# Require 'coffee-script/repl' to import the repl module
+# Require 'kavascript/repl' to import the repl module
 repl = require '../repl'
 
 console.log 'Custom REPL! Type `sayHi()` to see what it does!'

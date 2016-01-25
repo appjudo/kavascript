@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>command.coffee</title>
+  <title>command.ks</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -21,77 +21,77 @@
               
                 
                 <a class="source" href="browser.html">
-                  browser.coffee
+                  browser.ks
                 </a>
               
                 
-                <a class="source" href="cake.html">
-                  cake.coffee
+                <a class="source" href="kake.html">
+                  kake.ks
                 </a>
               
                 
-                <a class="source" href="coffee-script.html">
-                  coffee-script.coffee
+                <a class="source" href="kavascript.html">
+                  kavascript.ks
                 </a>
               
                 
                 <a class="source" href="command.html">
-                  command.coffee
+                  command.ks
                 </a>
               
                 
                 <a class="source" href="grammar.html">
-                  grammar.coffee
+                  grammar.ks
                 </a>
               
                 
                 <a class="source" href="helpers.html">
-                  helpers.coffee
+                  helpers.ks
                 </a>
               
                 
                 <a class="source" href="index.html">
-                  index.coffee
+                  index.ks
                 </a>
               
                 
                 <a class="source" href="lexer.html">
-                  lexer.coffee
+                  lexer.ks
                 </a>
               
                 
                 <a class="source" href="nodes.html">
-                  nodes.coffee
+                  nodes.ks
                 </a>
               
                 
                 <a class="source" href="optparse.html">
-                  optparse.coffee
+                  optparse.ks
                 </a>
               
                 
                 <a class="source" href="register.html">
-                  register.coffee
+                  register.ks
                 </a>
               
                 
                 <a class="source" href="repl.html">
-                  repl.coffee
+                  repl.ks
                 </a>
               
                 
                 <a class="source" href="rewriter.html">
-                  rewriter.coffee
+                  rewriter.ks
                 </a>
               
                 
                 <a class="source" href="scope.html">
-                  scope.litcoffee
+                  scope.vks
                 </a>
               
                 
                 <a class="source" href="sourcemap.html">
-                  sourcemap.litcoffee
+                  sourcemap.vks
                 </a>
               
             </div>
@@ -103,7 +103,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>command.coffee</h1>
+                  <h1>command.ks</h1>
               </div>
           </li>
         
@@ -115,7 +115,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p>The <code>coffee</code> utility. Handles command-line compilation of CoffeeScript
+              <p>The <code>ks</code> utility. Handles command-line compilation of KavaScript
 into various forms: saved into <code>.js</code> files or printed to stdout
 or recompiled every time the source is saved,
 printed as a token stream or as the syntax tree, or launch an
@@ -140,7 +140,7 @@ interactive REPL.</p>
 path           = <span class="hljs-built_in">require</span> <span class="hljs-string">'path'</span>
 helpers        = <span class="hljs-built_in">require</span> <span class="hljs-string">'./helpers'</span>
 optparse       = <span class="hljs-built_in">require</span> <span class="hljs-string">'./optparse'</span>
-CoffeeScript   = <span class="hljs-built_in">require</span> <span class="hljs-string">'./coffee-script'</span>
+KavaScript   = <span class="hljs-built_in">require</span> <span class="hljs-string">'./kavascript'</span>
 {spawn, exec}  = <span class="hljs-built_in">require</span> <span class="hljs-string">'child_process'</span>
 {EventEmitter} = <span class="hljs-built_in">require</span> <span class="hljs-string">'events'</span>
 
@@ -155,11 +155,11 @@ useWinPathSep  = path.sep <span class="hljs-keyword">is</span> <span class="hljs
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>Allow CoffeeScript to emit Node.js events.</p>
+              <p>Allow KavaScript to emit Node.js events.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>helpers.extend CoffeeScript, <span class="hljs-keyword">new</span> EventEmitter
+            <div class="content"><div class='highlight'><pre>helpers.extend KavaScript, <span class="hljs-keyword">new</span> EventEmitter
 
 <span class="hljs-function"><span class="hljs-title">printLine</span> = <span class="hljs-params">(line)</span> -&gt;</span> process.stdout.write line + <span class="hljs-string">'\n'</span>
 <span class="hljs-function"><span class="hljs-title">printWarn</span> = <span class="hljs-params">(line)</span> -&gt;</span> process.stderr.write line + <span class="hljs-string">'\n'</span>
@@ -180,9 +180,9 @@ useWinPathSep  = path.sep <span class="hljs-keyword">is</span> <span class="hljs
             </div>
             
             <div class="content"><div class='highlight'><pre>BANNER = <span class="hljs-string">'''
-  Usage: coffee [options] path/to/script.coffee -- [args]
+  Usage: ks [options] path/to/script.ks -- [args]
 
-  If called without options, `coffee` will run your script.
+  If called without options, `ks` will run your script.
 '''</span></pre></div></div>
             
         </li>
@@ -194,7 +194,7 @@ useWinPathSep  = path.sep <span class="hljs-keyword">is</span> <span class="hljs
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p>The list of all the valid option flags that <code>coffee</code> knows how to handle.</p>
+              <p>The list of all the valid option flags that <code>ks</code> knows how to handle.</p>
 
             </div>
             
@@ -203,8 +203,8 @@ useWinPathSep  = path.sep <span class="hljs-keyword">is</span> <span class="hljs
   [<span class="hljs-string">'-c'</span>, <span class="hljs-string">'--compile'</span>,         <span class="hljs-string">'compile to JavaScript and save as .js files'</span>]
   [<span class="hljs-string">'-e'</span>, <span class="hljs-string">'--eval'</span>,            <span class="hljs-string">'pass a string from the command line as input'</span>]
   [<span class="hljs-string">'-h'</span>, <span class="hljs-string">'--help'</span>,            <span class="hljs-string">'display this help message'</span>]
-  [<span class="hljs-string">'-i'</span>, <span class="hljs-string">'--interactive'</span>,     <span class="hljs-string">'run an interactive CoffeeScript REPL'</span>]
-  [<span class="hljs-string">'-j'</span>, <span class="hljs-string">'--join [FILE]'</span>,     <span class="hljs-string">'concatenate the source CoffeeScript before compiling'</span>]
+  [<span class="hljs-string">'-i'</span>, <span class="hljs-string">'--interactive'</span>,     <span class="hljs-string">'run an interactive KavaScript REPL'</span>]
+  [<span class="hljs-string">'-j'</span>, <span class="hljs-string">'--join [FILE]'</span>,     <span class="hljs-string">'concatenate the source KavaScript before compiling'</span>]
   [<span class="hljs-string">'-m'</span>, <span class="hljs-string">'--map'</span>,             <span class="hljs-string">'generate source map and save as .js.map files'</span>]
   [<span class="hljs-string">'-n'</span>, <span class="hljs-string">'--nodes'</span>,           <span class="hljs-string">'print out the parse tree that the parser produces'</span>]
   [      <span class="hljs-string">'--nodejs [ARGS]'</span>,   <span class="hljs-string">'pass options directly to the "node" binary'</span>]
@@ -213,7 +213,7 @@ useWinPathSep  = path.sep <span class="hljs-keyword">is</span> <span class="hljs
   [<span class="hljs-string">'-p'</span>, <span class="hljs-string">'--print'</span>,           <span class="hljs-string">'print out the compiled JavaScript'</span>]
   [<span class="hljs-string">'-r'</span>, <span class="hljs-string">'--require [MODULE*]'</span>, <span class="hljs-string">'require the given module before eval or REPL'</span>]
   [<span class="hljs-string">'-s'</span>, <span class="hljs-string">'--stdio'</span>,           <span class="hljs-string">'listen for and compile scripts over stdio'</span>]
-  [<span class="hljs-string">'-l'</span>, <span class="hljs-string">'--literate'</span>,        <span class="hljs-string">'treat stdio as literate style coffee-script'</span>]
+  [<span class="hljs-string">'-l'</span>, <span class="hljs-string">'--verbose'</span>,        <span class="hljs-string">'treat stdio as verbose style kavascript'</span>]
   [<span class="hljs-string">'-t'</span>, <span class="hljs-string">'--tokens'</span>,          <span class="hljs-string">'print out the tokens that the lexer/rewriter produce'</span>]
   [<span class="hljs-string">'-v'</span>, <span class="hljs-string">'--version'</span>,         <span class="hljs-string">'display the version number'</span>]
   [<span class="hljs-string">'-w'</span>, <span class="hljs-string">'--watch'</span>,           <span class="hljs-string">'watch scripts for changes and rerun commands'</span>]
@@ -248,7 +248,7 @@ optionParser = <span class="hljs-literal">null</span></pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>Run <code>coffee</code> by parsing passed options and determining what action to take.
+              <p>Run <code>ks</code> by parsing passed options and determining what action to take.
 Many flags cause us to divert before compiling anything. Flags passed after
 <code>--</code> will be passed verbatim to your script as arguments in <code>process.argv</code></p>
 
@@ -284,7 +284,7 @@ Many flags cause us to divert before compiling anything. Flags passed after
   <span class="hljs-keyword">return</span> <span class="hljs-built_in">require</span>(<span class="hljs-string">'./repl'</span>).start(replCliOpts)   <span class="hljs-keyword">unless</span> opts.arguments.length
   literals = <span class="hljs-keyword">if</span> opts.run <span class="hljs-keyword">then</span> opts.arguments.splice <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> []
   process.argv = process.argv[<span class="hljs-number">0.</span><span class="hljs-number">.1</span>].concat literals
-  process.argv[<span class="hljs-number">0</span>] = <span class="hljs-string">'coffee'</span>
+  process.argv[<span class="hljs-number">0</span>] = <span class="hljs-string">'ks'</span>
 
   opts.output = path.resolve opts.output  <span class="hljs-keyword">if</span> opts.output
   <span class="hljs-keyword">if</span> opts.join
@@ -296,11 +296,11 @@ Many flags cause us to divert before compiling anything. Flags passed after
     If for some reason it's necessary to share local variables between files,
     replace...
 
-        $ coffee --compile --join bundle.js -- a.coffee b.coffee c.coffee
+        $ ks --compile --join bundle.js -- a.ks b.ks c.ks
 
     with...
 
-        $ cat a.coffee b.coffee c.coffee | coffee --compile --stdio &gt; bundle.js
+        $ cat a.ks b.ks c.ks | ks --compile --stdio &gt; bundle.js
 
     '''</span>
   <span class="hljs-keyword">for</span> source <span class="hljs-keyword">in</span> opts.arguments
@@ -324,7 +324,7 @@ Many flags cause us to divert before compiling anything. Flags passed after
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
               <p>Compile a path, which could be a script or a directory. If a directory
-is passed, recursively compile all ‘.coffee’, ‘.litcoffee’, and ‘.coffee.md’
+is passed, recursively compile all ‘.ks’, ‘.vks’, and ‘.ks.md’
 extension source files in it and all subdirectories.</p>
 
             </div>
@@ -368,13 +368,13 @@ extension source files in it and all subdirectories.</p>
     notSources[source] = <span class="hljs-literal">yes</span>
 
 <span class="hljs-function"><span class="hljs-title">findDirectoryIndex</span> = <span class="hljs-params">(source)</span> -&gt;</span>
-  <span class="hljs-keyword">for</span> ext <span class="hljs-keyword">in</span> CoffeeScript.FILE_EXTENSIONS
+  <span class="hljs-keyword">for</span> ext <span class="hljs-keyword">in</span> KavaScript.FILE_EXTENSIONS
     index = path.join source, <span class="hljs-string">"index<span class="hljs-subst">#{ext}</span>"</span>
     <span class="hljs-keyword">try</span>
       <span class="hljs-keyword">return</span> index <span class="hljs-keyword">if</span> (fs.statSync index).isFile()
     <span class="hljs-keyword">catch</span> err
       <span class="hljs-keyword">throw</span> err <span class="hljs-keyword">unless</span> err.code <span class="hljs-keyword">is</span> <span class="hljs-string">'ENOENT'</span>
-  <span class="hljs-built_in">console</span>.error <span class="hljs-string">"Missing index.coffee or index.litcoffee in <span class="hljs-subst">#{source}</span>"</span>
+  <span class="hljs-built_in">console</span>.error <span class="hljs-string">"Missing index.ks or index.vks in <span class="hljs-subst">#{source}</span>"</span>
   process.exit <span class="hljs-number">1</span></pre></div></div>
             
         </li>
@@ -397,34 +397,34 @@ requested options. If evaluating the script directly sets <code>__filename</code
   options = compileOptions file, base
   <span class="hljs-keyword">try</span>
     t = task = {file, input, options}
-    CoffeeScript.emit <span class="hljs-string">'compile'</span>, task
+    KavaScript.emit <span class="hljs-string">'compile'</span>, task
     <span class="hljs-keyword">if</span> o.tokens
-      printTokens CoffeeScript.tokens t.input, t.options
+      printTokens KavaScript.tokens t.input, t.options
     <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> o.nodes
-      printLine CoffeeScript.nodes(t.input, t.options).toString().trim()
+      printLine KavaScript.nodes(t.input, t.options).toString().trim()
     <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> o.run
-      CoffeeScript.register()
-      CoffeeScript.eval opts.prelude, t.options <span class="hljs-keyword">if</span> opts.prelude
-      CoffeeScript.run t.input, t.options
+      KavaScript.register()
+      KavaScript.eval opts.prelude, t.options <span class="hljs-keyword">if</span> opts.prelude
+      KavaScript.run t.input, t.options
     <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> o.join <span class="hljs-keyword">and</span> t.file <span class="hljs-keyword">isnt</span> o.join
-      t.input = helpers.invertLiterate t.input <span class="hljs-keyword">if</span> helpers.isLiterate file
+      t.input = helpers.invertVerbose t.input <span class="hljs-keyword">if</span> helpers.isVerbose file
       sourceCode[sources.indexOf(t.file)] = t.input
       compileJoin()
     <span class="hljs-keyword">else</span>
-      compiled = CoffeeScript.compile t.input, t.options
+      compiled = KavaScript.compile t.input, t.options
       t.output = compiled
       <span class="hljs-keyword">if</span> o.map
         t.output = compiled.js
         t.sourceMap = compiled.v3SourceMap
 
-      CoffeeScript.emit <span class="hljs-string">'success'</span>, task
+      KavaScript.emit <span class="hljs-string">'success'</span>, task
       <span class="hljs-keyword">if</span> o.<span class="hljs-built_in">print</span>
         printLine t.output.trim()
       <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> o.compile <span class="hljs-keyword">or</span> o.map
         writeJs base, t.file, t.output, options.jsPath, t.sourceMap
   <span class="hljs-keyword">catch</span> err
-    CoffeeScript.emit <span class="hljs-string">'failure'</span>, err, task
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">if</span> CoffeeScript.listeners(<span class="hljs-string">'failure'</span>).length
+    KavaScript.emit <span class="hljs-string">'failure'</span>, err, task
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">if</span> KavaScript.listeners(<span class="hljs-string">'failure'</span>).length
     message = err.stack <span class="hljs-keyword">or</span> <span class="hljs-string">"<span class="hljs-subst">#{err}</span>"</span>
     <span class="hljs-keyword">if</span> o.watch
       printLine message + <span class="hljs-string">'\x07'</span>
@@ -485,7 +485,7 @@ them together.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
-              <p>Watch a source CoffeeScript file using <code>fs.watch</code>, recompiling it every
+              <p>Watch a source KavaScript file using <code>fs.watch</code>, recompiling it every
 time the file is updated. May be used in combination with other options,
 such as <code>--print</code>.</p>
 
@@ -785,14 +785,14 @@ same directory as the <code>.js</code> file.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
-              <p>The compile-time options to pass to the CoffeeScript compiler.</p>
+              <p>The compile-time options to pass to the KavaScript compiler.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-title">compileOptions</span> = <span class="hljs-params">(filename, base)</span> -&gt;</span>
   answer = {
     filename
-    <span class="hljs-attribute">literate</span>: opts.literate <span class="hljs-keyword">or</span> helpers.isLiterate(filename)
+    <span class="hljs-attribute">verbose</span>: opts.verbose <span class="hljs-keyword">or</span> helpers.isVerbose(filename)
     <span class="hljs-attribute">bare</span>: opts.bare
     <span class="hljs-attribute">header</span>: opts.compile <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> opts[<span class="hljs-string">'no-header'</span>]
     <span class="hljs-attribute">sourceMap</span>: opts.map
@@ -870,7 +870,7 @@ shown.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-title">version</span> = -&gt;</span>
-  printLine <span class="hljs-string">"CoffeeScript version <span class="hljs-subst">#{CoffeeScript.VERSION}</span>"</span></pre></div></div>
+  printLine <span class="hljs-string">"KavaScript version <span class="hljs-subst">#{KavaScript.VERSION}</span>"</span></pre></div></div>
             
         </li>
         

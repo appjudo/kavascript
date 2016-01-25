@@ -1,15 +1,18 @@
 {
-  "name": "coffee-script",
+  "name": "kavascript",
   "version": "1.10.0",
   "main": [
-    "lib/coffee-script/coffee-script.js"
+    "lib/kavascript/kavascript.js"
   ],
-  "description": "Unfancy JavaScript",
+  "description": "A Modern Alternative to Modern JavaScript",
   "keywords": [
+    "kavascript",
     "javascript",
     "language",
     "coffeescript",
-    "compiler"
+    "compiler",
+    "es6",
+    "es7"
   ],
   "devDependencies": {
     "uglify-js": "~2.2",
@@ -19,7 +22,7 @@
     "docco": "~0.6.2"
   },
   "author": {
-    "name": "Jeremy Ashkenas"
+    "name": "AppJudo Inc."
   },
   "ignore": [
     "test"

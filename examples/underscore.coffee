@@ -1,11 +1,17 @@
-# **Underscore.coffee
-# (c) 2011 Jeremy Ashkenas, DocumentCloud Inc.**
+# Underscore.ks
+# Copyright (c) 2016 AppJudo Inc.
+# 
+# Based on Underscore.coffee
+# (c) 2011 Jeremy Ashkenas, DocumentCloud Inc.
+# 
 # Underscore is freely distributable under the terms of the
 # [MIT license](http://en.wikipedia.org/wiki/MIT_License).
+# 
 # Portions of Underscore are inspired by or borrowed from
 # [Prototype.js](http://prototypejs.org/api), Oliver Steele's
 # [Functional](http://osteele.com), and John Resig's
 # [Micro-Templating](http://ejohn.org).
+# 
 # For all details and documentation:
 # http://documentcloud.github.com/underscore/
 
