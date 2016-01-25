@@ -12,7 +12,7 @@ helpers       = require './helpers'
 SourceMap     = require './sourcemap'
 
 # The current KavaScript version number.
-exports.VERSION = '1.10.0'
+exports.VERSION = '1.10.1'
 
 exports.FILE_EXTENSIONS = ['.ks', '.vks', '.ks.md']
 

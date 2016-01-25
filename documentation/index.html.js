@@ -115,7 +115,7 @@
 
     <p>
       <b>Latest Version:</b>
-      <a href="http://github.com/appjudo/kavascript/tarball/1.10.0">1.10.0</a>
+      <a href="http://github.com/appjudo/kavascript/tarball/1.10.1">1.10.1</a>
     </p>
 
     <pre>npm install -g kavascript</pre>
@@ -1046,10 +1046,10 @@ Expressions
     </h2>
 
     <p>
-      <%= releaseHeader('2016-01-24', '1.10.0', '1.10.0') %>
+      <%= releaseHeader('2016-01-24', '1.10.1', '1.10.1') %>
       <ul>
         <li>
-          Initial release, forked from CoffeeScript 1.10.0.
+          Initial KavaScript release, forked from CoffeeScript 1.10.0.
         </li>
       </ul>
     </p>
